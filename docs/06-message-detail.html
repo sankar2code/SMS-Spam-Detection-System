@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Message Detail — ShieldLine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { bg: '#0a0e16', surface: '#11161f', surface2: '#161c28', surface3: '#1d2433',
+      border: '#232b3a', accent: '#38bdf8', accentStrong: '#0ea5e9',
+      spam: '#f87171', ham: '#34d399', uncertain: '#fbbf24', info: '#818cf8',
+      tprimary: '#e6edf7', tsecondary: '#93a1b8', tmuted: '#5b6b85' },
+    fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], mono: ['JetBrains Mono','ui-monospace','monospace'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-tprimary font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-border bg-surface transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-border px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 text-accent"><i data-lucide="shield-check" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-semibold text-tprimary">ShieldLine</p><p class="text-[11px] text-tmuted">SMS Threat Defense</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Monitor</p>
+      <a href="02-dashboard.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="layout-dashboard" class="sl-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-live-feed.html" class="sl-nav-link is-active flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="activity" class="sl-nav-icon h-4 w-4"></i> Live feed <span class="relative ml-auto flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ham opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-ham"></span></span></a>
+      <a href="08-alerts.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="bell-ring" class="sl-nav-icon h-4 w-4"></i> Alerts &amp; campaigns <span class="ml-auto rounded-full bg-spam/15 px-1.5 py-0.5 text-[10px] font-semibold text-spam">2</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Triage</p>
+      <a href="04-quarantine.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="shield-alert" class="sl-nav-icon h-4 w-4"></i> Quarantine <span class="ml-auto rounded-full bg-surface3 px-1.5 py-0.5 text-[10px] font-semibold text-tsecondary">128</span></a>
+      <a href="05-review-queue.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="list-checks" class="sl-nav-icon h-4 w-4"></i> Review queue <span class="ml-auto rounded-full bg-uncertain/15 px-1.5 py-0.5 text-[10px] font-semibold text-uncertain">14</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">System</p>
+      <a href="09-model-retraining.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="brain-circuit" class="sl-nav-icon h-4 w-4"></i> Model &amp; retraining</a>
+      <a href="10-settings.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="settings" class="sl-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-border p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-tmuted hover:bg-surface2 hover:text-tsecondary"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-info/20 text-xs font-semibold text-info">PN</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-tprimary">Priya Nandakumar</p><p class="text-[11px] text-tmuted">IT Security Manager</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-border bg-bg/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-border p-2 text-tsecondary hover:bg-surface2 lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <a href="03-live-feed.html" class="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="arrow-left" class="h-3.5 w-3.5"></i> Live feed</a>
+      <div>
+        <h1 class="text-lg font-semibold">Message detail &amp; explainability</h1>
+        <p class="text-xs text-tmuted">Every classification is logged with the evidence behind it (§4.4)</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-5xl space-y-4">
+
+      <!-- Verdict header -->
+      <div class="flex flex-col gap-4 rounded-xl border border-spam/25 bg-spam/[0.06] p-5 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-spam/15 text-spam"><i data-lucide="shield-x" class="h-6 w-6"></i></div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="rounded-full bg-spam/15 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-spam">Spam · quarantined</span>
+              <span class="font-mono text-xs text-tmuted">sha256:7c41af9e2b…b209</span>
+            </div>
+            <p class="mt-1.5 text-base text-tprimary">"WINNER!! As a valued customer you have been selected to receive a £900 prize reward! To claim call 09061701461. Code KL341."</p>
+            <p class="mt-1 text-xs text-tmuted">From <span class="font-mono text-tsecondary">PRZ-WIN</span> · received Jun 8, 2026 at 14:37:02 · routed to quarantine</p>
+          </div>
+        </div>
+        <div class="flex flex-shrink-0 flex-col items-center rounded-xl border border-border bg-surface px-5 py-3 text-center">
+          <p class="text-2xl font-bold font-mono text-spam">98.4%</p>
+          <p class="text-[11px] text-tmuted">model confidence</p>
+        </div>
+      </div>
+
+      <div class="grid gap-4 lg:grid-cols-5">
+        <!-- Left: explainability + audit trail -->
+        <div class="space-y-4 lg:col-span-3">
+          <div class="rounded-xl border border-border bg-surface p-5">
+            <p class="text-sm font-semibold">Classified as spam because</p>
+            <p class="mt-1 text-xs text-tmuted">Top contributing TF‑IDF terms, ranked by weight in the Decision Tree's decision path</p>
+            <div class="mt-4 space-y-3">
+              <div>
+                <div class="flex justify-between text-sm"><span class="font-mono text-tsecondary">"WINNER"</span><span class="font-mono text-xs text-tmuted">weight 0.42</span></div>
+                <div class="sl-meter mt-1.5"><span style="width:100%; background:var(--spam)"></span></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm"><span class="font-mono text-tsecondary">"CLAIM"</span><span class="font-mono text-xs text-tmuted">weight 0.38</span></div>
+                <div class="sl-meter mt-1.5"><span style="width:90%; background:var(--spam)"></span></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm"><span class="font-mono text-tsecondary">"PRIZE"</span><span class="font-mono text-xs text-tmuted">weight 0.31</span></div>
+                <div class="sl-meter mt-1.5"><span style="width:74%; background:var(--spam)"></span></div>
+              </div>
+            </div>
+            <div class="mt-4 flex items-center justify-between rounded-lg border border-border bg-surface2 px-4 py-3">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-wide text-tmuted">Sentiment signal (SentiWordNet)</p>
+                <p class="mt-0.5 text-sm text-tsecondary">Score <span class="font-mono text-uncertain">+0.81</span> — matches the bimodal urgency/reward pattern typical of spam (corpus avg. <span class="font-mono">+0.17</span>)</p>
+              </div>
+              <i data-lucide="gauge" class="h-5 w-5 flex-shrink-0 text-uncertain"></i>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-border bg-surface p-5">
+            <p class="text-sm font-semibold">Audit trail</p>
+            <p class="text-xs text-tmuted">Logged per FR2 — message hash, label, confidence, timestamp; no raw text persisted (FR10)</p>
+            <ol class="mt-4 space-y-0">
+              <li class="relative flex gap-4 pb-5">
+                <div class="relative flex flex-col items-center"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-info/15 text-info"><i data-lucide="inbox" class="h-3.5 w-3.5"></i></span><span class="absolute top-6 h-full w-px bg-border"></span></div>
+                <div class="flex-1"><p class="text-sm font-medium">Received via SMS gateway</p><p class="text-xs text-tmuted">14:37:02.011 · sender PRZ-WIN</p></div>
+              </li>
+              <li class="relative flex gap-4 pb-5">
+                <div class="relative flex flex-col items-center"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-info/15 text-info"><i data-lucide="filter" class="h-3.5 w-3.5"></i></span><span class="absolute top-6 h-full w-px bg-border"></span></div>
+                <div class="flex-1"><p class="text-sm font-medium">Preprocessed</p><p class="text-xs text-tmuted">14:37:02.014 · lowercase → punctuation removed → stop words removed → tokenised <span class="font-mono text-tmuted">(+3ms)</span></p></div>
+              </li>
+              <li class="relative flex gap-4 pb-5">
+                <div class="relative flex flex-col items-center"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-info/15 text-info"><i data-lucide="grid-3x3" class="h-3.5 w-3.5"></i></span><span class="absolute top-6 h-full w-px bg-border"></span></div>
+                <div class="flex-1"><p class="text-sm font-medium">TF‑IDF vectorised</p><p class="text-xs text-tmuted">14:37:02.026 · mapped to 5,572-document feature matrix <span class="font-mono text-tmuted">(+12ms)</span></p></div>
+              </li>
+              <li class="relative flex gap-4 pb-5">
+                <div class="relative flex flex-col items-center"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-spam/15 text-spam"><i data-lucide="brain-circuit" class="h-3.5 w-3.5"></i></span><span class="absolute top-6 h-full w-px bg-border"></span></div>
+                <div class="flex-1"><p class="text-sm font-medium">Scored by Decision Tree v2.4</p><p class="text-xs text-tmuted">14:37:02.054 · label <span class="font-mono text-spam">spam</span>, confidence <span class="font-mono text-spam">98.4%</span> <span class="font-mono text-tmuted">(+28ms)</span></p></div>
+              </li>
+              <li class="relative flex gap-4 pb-5">
+                <div class="relative flex flex-col items-center"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-spam/15 text-spam"><i data-lucide="shield-alert" class="h-3.5 w-3.5"></i></span><span class="absolute top-6 h-full w-px bg-border"></span></div>
+                <div class="flex-1"><p class="text-sm font-medium">Routed to quarantine</p><p class="text-xs text-tmuted">14:37:02.071 · held for 30 days, recipient not notified <span class="font-mono text-tmuted">(+17ms)</span></p></div>
+              </li>
+              <li class="relative flex gap-4">
+                <div class="relative flex flex-col items-center"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-ham/15 text-ham"><i data-lucide="file-check-2" class="h-3.5 w-3.5"></i></span></div>
+                <div class="flex-1"><p class="text-sm font-medium">Logged to audit trail</p><p class="text-xs text-tmuted">14:37:02.079 · hash, label, confidence, timestamp recorded · total latency <span class="font-mono text-ham">68ms</span></p></div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Right: actions + meta -->
+        <div class="space-y-4 lg:col-span-2">
+          <div class="rounded-xl border border-border bg-surface p-5">
+            <p class="text-sm font-semibold">Review actions</p>
+            <p class="mt-1 text-xs text-tmuted">An override is logged as an analyst correction and queued for the next retraining run.</p>
+            <div class="mt-4 space-y-2">
+              <button onclick="slToast('Classification confirmed — no further action needed')" class="flex w-full items-center justify-center gap-2 rounded-lg bg-surface2 border border-border px-4 py-2.5 text-sm font-medium text-tprimary hover:bg-surface3">
+                <i data-lucide="check" class="h-4 w-4 text-ham"></i> Confirm classification
+              </button>
+              <button data-modal-open="override-modal" class="flex w-full items-center justify-center gap-2 rounded-lg border border-ham/30 bg-ham/10 px-4 py-2.5 text-sm font-medium text-ham hover:bg-ham/15">
+                <i data-lucide="inbox" class="h-4 w-4"></i> Override — release to inbox
+              </button>
+              <button onclick="slToast('Note added to the audit record for this message')" class="flex w-full items-center justify-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-medium text-tsecondary hover:bg-surface2">
+                <i data-lucide="message-square-plus" class="h-4 w-4"></i> Add analyst note
+              </button>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-border bg-surface p-5">
+            <p class="text-sm font-semibold">Message metadata</p>
+            <dl class="mt-3 space-y-2.5 text-sm">
+              <div class="flex items-center justify-between"><dt class="text-tmuted">Sender ID</dt><dd class="font-mono text-tsecondary">PRZ-WIN</dd></div>
+              <div class="flex items-center justify-between"><dt class="text-tmuted">Channel</dt><dd class="text-tsecondary">SMS · enterprise gateway</dd></div>
+              <div class="flex items-center justify-between"><dt class="text-tmuted">Model version</dt><dd class="font-mono text-tsecondary">decision-tree-v2.4</dd></div>
+              <div class="flex items-center justify-between"><dt class="text-tmuted">Total latency</dt><dd class="font-mono text-ham">68ms <span class="text-tmuted">(P99 target &lt;100ms)</span></dd></div>
+              <div class="flex items-center justify-between"><dt class="text-tmuted">Stored content</dt><dd class="text-tsecondary">Hash only — GDPR/CCPA</dd></div>
+              <div class="flex items-center justify-between"><dt class="text-tmuted">Retention</dt><dd class="text-tsecondary">29 days remaining</dd></div>
+            </dl>
+            <a href="04-quarantine.html" class="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:underline">View in quarantine queue <i data-lucide="arrow-right" class="h-3 w-3"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Override modal -->
+  <div id="override-modal" data-modal class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4">
+    <div class="w-full max-w-md rounded-xl border border-border bg-surface p-6 shadow-2xl">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-ham/15 text-ham"><i data-lucide="inbox" class="h-5 w-5"></i></div>
+      <h3 class="mt-4 text-base font-semibold">Override and release to the inbox?</h3>
+      <p class="mt-1.5 text-sm leading-relaxed text-tsecondary">
+        This marks the model's <span class="text-spam font-medium">spam</span> verdict as a false positive, delivers the
+        message to <span class="font-mono text-tprimary">PRZ-WIN</span>'s recipient, and adds a labelled correction to
+        the retraining queue (Flow 2).
+      </p>
+      <div class="mt-6 flex justify-end gap-2">
+        <button data-modal-close class="rounded-lg border border-border px-4 py-2 text-sm font-medium text-tsecondary hover:bg-surface2">Cancel</button>
+        <button onclick="document.getElementById('override-modal').classList.add('hidden'); slToast('Released to inbox · correction logged for retraining');" class="rounded-lg bg-ham px-4 py-2 text-sm font-semibold text-bg hover:brightness-110">Release &amp; log correction</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="sl-toast" class="rounded-lg border border-border bg-surface2 px-4 py-2.5 text-sm text-tprimary shadow-2xl">
+    <span data-toast-text></span>
+  </div>
+
+  <script src="../assets/app.js"></script>
+</body>
+</html>

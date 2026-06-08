@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Settings & Governance — ShieldLine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { bg: '#0a0e16', surface: '#11161f', surface2: '#161c28', surface3: '#1d2433',
+      border: '#232b3a', accent: '#38bdf8', accentStrong: '#0ea5e9',
+      spam: '#f87171', ham: '#34d399', uncertain: '#fbbf24', info: '#818cf8',
+      tprimary: '#e6edf7', tsecondary: '#93a1b8', tmuted: '#5b6b85' },
+    fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], mono: ['JetBrains Mono','ui-monospace','monospace'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-tprimary font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-border bg-surface transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-border px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 text-accent"><i data-lucide="shield-check" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-semibold text-tprimary">ShieldLine</p><p class="text-[11px] text-tmuted">SMS Threat Defense</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Monitor</p>
+      <a href="02-dashboard.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="layout-dashboard" class="sl-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-live-feed.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="activity" class="sl-nav-icon h-4 w-4"></i> Live feed <span class="relative ml-auto flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ham opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-ham"></span></span></a>
+      <a href="08-alerts.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="bell-ring" class="sl-nav-icon h-4 w-4"></i> Alerts &amp; campaigns <span class="ml-auto rounded-full bg-spam/15 px-1.5 py-0.5 text-[10px] font-semibold text-spam">2</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Triage</p>
+      <a href="04-quarantine.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="shield-alert" class="sl-nav-icon h-4 w-4"></i> Quarantine <span class="ml-auto rounded-full bg-surface3 px-1.5 py-0.5 text-[10px] font-semibold text-tsecondary">128</span></a>
+      <a href="05-review-queue.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="list-checks" class="sl-nav-icon h-4 w-4"></i> Review queue <span class="ml-auto rounded-full bg-uncertain/15 px-1.5 py-0.5 text-[10px] font-semibold text-uncertain">14</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">System</p>
+      <a href="09-model-retraining.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="brain-circuit" class="sl-nav-icon h-4 w-4"></i> Model &amp; retraining</a>
+      <a href="10-settings.html" class="sl-nav-link is-active flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="settings" class="sl-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-border p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-tmuted hover:bg-surface2 hover:text-tsecondary"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-info/20 text-xs font-semibold text-info">PN</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-tprimary">Priya Nandakumar</p><p class="text-[11px] text-tmuted">IT Security Manager</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-border bg-bg/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-border p-2 text-tsecondary hover:bg-surface2 lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <div>
+        <h1 class="text-lg font-semibold">Settings &amp; governance</h1>
+        <p class="text-xs text-tmuted">§4.3 · changes that affect classification behavior require a second approver</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-5xl" data-tabs>
+
+      <!-- Tabs -->
+      <div class="flex flex-wrap gap-2 border-b border-border pb-3">
+        <button data-tab="general" class="sl-nav-link is-active rounded-lg border border-border px-3.5 py-2 text-sm font-medium text-tsecondary hover:text-tprimary">General</button>
+        <button data-tab="thresholds" class="sl-nav-link rounded-lg border border-border px-3.5 py-2 text-sm font-medium text-tsecondary hover:text-tprimary">Classification thresholds</button>
+        <button data-tab="allowlist" class="sl-nav-link rounded-lg border border-border px-3.5 py-2 text-sm font-medium text-tsecondary hover:text-tprimary">Sender allowlist</button>
+        <button data-tab="apikeys" class="sl-nav-link rounded-lg border border-border px-3.5 py-2 text-sm font-medium text-tsecondary hover:text-tprimary">API keys</button>
+        <button data-tab="team" class="sl-nav-link rounded-lg border border-border px-3.5 py-2 text-sm font-medium text-tsecondary hover:text-tprimary">Team &amp; roles</button>
+      </div>
+
+      <!-- General -->
+      <div data-tab-panel="general" class="mt-6 space-y-4">
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <p class="text-sm font-semibold">Organization</p>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label class="block text-xs font-medium text-tsecondary">Organization name</label>
+              <input type="text" value="Acme Mobile" class="sl-focus mt-1.5 w-full rounded-lg border border-border bg-surface2 px-3.5 py-2.5 text-sm text-tprimary focus:border-accent" />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-tsecondary">Time zone</label>
+              <input type="text" value="UTC (Coordinated Universal Time)" class="sl-focus mt-1.5 w-full rounded-lg border border-border bg-surface2 px-3.5 py-2.5 text-sm text-tprimary focus:border-accent" />
+            </div>
+          </div>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <p class="text-sm font-semibold">Deployment mode</p>
+          <p class="mt-1 text-xs text-tmuted">Per the go-to-market plan in §6 — controls whether spam is blocked or only measured</p>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <label class="flex cursor-pointer items-start gap-3 rounded-lg border border-border bg-surface2 px-4 py-3 has-[:checked]:border-accent">
+              <input type="radio" name="mode" class="mt-0.5 h-4 w-4 border-border bg-surface text-accent focus:ring-accent" />
+              <span><span class="block text-sm font-medium text-tprimary">Shadow mode</span><span class="text-xs text-tmuted">Classify and log everything; deliver all messages — used to tune thresholds before blocking</span></span>
+            </label>
+            <label class="flex cursor-pointer items-start gap-3 rounded-lg border border-accent bg-accent/[0.06] px-4 py-3">
+              <input type="radio" name="mode" checked class="mt-0.5 h-4 w-4 border-border bg-surface text-accent focus:ring-accent" />
+              <span><span class="block text-sm font-medium text-tprimary">Live — quarantine enabled</span><span class="text-xs text-tmuted">High-confidence spam (≥ 85%) is held; feedback loop and human review are active</span></span>
+            </label>
+          </div>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <p class="text-sm font-semibold">Data &amp; retention</p>
+          <div class="mt-3 flex items-center justify-between rounded-lg border border-border bg-surface2 px-4 py-3 text-sm">
+            <span class="text-tsecondary">Quarantine retention window</span>
+            <span class="font-mono text-tprimary">30 days</span>
+          </div>
+          <div class="mt-2 flex items-center justify-between rounded-lg border border-border bg-surface2 px-4 py-3 text-sm">
+            <span class="text-tsecondary">Message content storage</span>
+            <span class="inline-flex items-center gap-1.5 text-ham"><i data-lucide="lock" class="h-3.5 w-3.5"></i> In-memory only — SHA‑256 hash retained (FR10)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thresholds -->
+      <div data-tab-panel="thresholds" class="mt-6 hidden space-y-4">
+        <div class="flex items-start gap-3 rounded-xl border border-uncertain/30 bg-uncertain/10 p-4">
+          <i data-lucide="shield-alert" class="mt-0.5 h-5 w-5 flex-shrink-0 text-uncertain"></i>
+          <p class="text-sm text-tsecondary"><span class="font-medium text-tprimary">These settings require a second approver.</span> Per §4.3, adjusting the spam threshold or the low-confidence boundary needs sign-off from the security team before it takes effect.</p>
+        </div>
+
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-semibold">Quarantine confidence threshold</p>
+            <span class="font-mono text-lg font-bold text-accent" id="threshold-value">85%</span>
+          </div>
+          <p class="mt-1 text-xs text-tmuted">Messages scored at or above this confidence are quarantined. Raising it reduces false positives but lets more borderline spam through.</p>
+          <input id="threshold-slider" type="range" min="70" max="98" value="85" oninput="document.getElementById('threshold-value').textContent = this.value + '%'"
+            class="mt-4 w-full accent-accent" />
+          <div class="mt-1 flex justify-between font-mono text-[11px] text-tmuted"><span>70% (more aggressive)</span><span>98% (more conservative)</span></div>
+          <p class="mt-3 text-xs text-tsecondary">Open question from §11: organizations handling critical SMS (healthcare alerts, banking OTPs) may want a threshold ≥ 90% to minimize false positives in high-stakes flows.</p>
+        </div>
+
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <p class="text-sm font-semibold">Low-confidence review boundary</p>
+          <p class="mt-1 text-xs text-tmuted">Messages inside this band are routed to the analyst review queue instead of being auto-decided (Flow 5)</p>
+          <div class="mt-4 flex items-center gap-3">
+            <input type="text" value="40%" class="sl-focus w-24 rounded-lg border border-border bg-surface2 px-3 py-2 text-center font-mono text-sm text-tprimary focus:border-accent" />
+            <span class="text-tmuted">to</span>
+            <input type="text" value="60%" class="sl-focus w-24 rounded-lg border border-border bg-surface2 px-3 py-2 text-center font-mono text-sm text-tprimary focus:border-accent" />
+            <span class="text-xs text-tmuted">currently <span class="font-mono text-uncertain">0.31%</span> of traffic falls in this band</span>
+          </div>
+        </div>
+
+        <div class="flex justify-end">
+          <button data-modal-open="approval-modal" class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-bg hover:bg-accentStrong">
+            <i data-lucide="send" class="h-4 w-4"></i> Submit changes for approval
+          </button>
+        </div>
+      </div>
+
+      <!-- Allowlist -->
+      <div data-tab-panel="allowlist" class="mt-6 hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-semibold">Trusted senders</p>
+            <p class="text-xs text-tmuted">Allowlisted senders bypass spam scoring entirely — additions require admin approval (§4.3)</p>
+          </div>
+          <button data-modal-open="allowlist-modal" class="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-sm font-semibold text-bg hover:bg-accentStrong"><i data-lucide="plus" class="h-4 w-4"></i> Add sender</button>
+        </div>
+        <div class="overflow-hidden rounded-xl border border-border bg-surface">
+          <div class="grid grid-cols-12 gap-3 border-b border-border bg-surface2/60 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-tmuted">
+            <div class="col-span-3">Sender ID / domain</div>
+            <div class="col-span-4">Reason</div>
+            <div class="col-span-3">Added by</div>
+            <div class="col-span-2 text-right">Actions</div>
+          </div>
+          <div class="divide-y divide-border-soft text-sm">
+            <div class="grid grid-cols-12 items-center gap-3 px-4 py-3">
+              <div class="col-span-3 font-mono text-xs text-tsecondary">ACME-PAYROLL</div>
+              <div class="col-span-4 text-tsecondary">Internal payroll notifications — high false-positive rate observed</div>
+              <div class="col-span-3 text-xs text-tsecondary">Priya N. · May 14, 2026</div>
+              <div class="col-span-2 text-right"><button onclick="slToast('Removal requires admin approval — request submitted')" class="rounded-lg border border-border px-2.5 py-1 text-xs text-tsecondary hover:bg-surface2">Remove</button></div>
+            </div>
+            <div class="grid grid-cols-12 items-center gap-3 px-4 py-3">
+              <div class="col-span-3 font-mono text-xs text-tsecondary">NHS-CLINIC</div>
+              <div class="col-span-4 text-tsecondary">Healthcare appointment reminders — critical, must always be delivered</div>
+              <div class="col-span-3 text-xs text-tsecondary">Priya N. · Apr 30, 2026</div>
+              <div class="col-span-2 text-right"><button onclick="slToast('Removal requires admin approval — request submitted')" class="rounded-lg border border-border px-2.5 py-1 text-xs text-tsecondary hover:bg-surface2">Remove</button></div>
+            </div>
+            <div class="grid grid-cols-12 items-center gap-3 px-4 py-3">
+              <div class="col-span-3 font-mono text-xs text-tsecondary">acme-deliveries.co</div>
+              <div class="col-span-4 text-tsecondary">Verified shipping &amp; delivery domain — confirmed with carrier partner</div>
+              <div class="col-span-3 text-xs text-tsecondary">Devon R. · Apr 2, 2026</div>
+              <div class="col-span-2 text-right"><button onclick="slToast('Removal requires admin approval — request submitted')" class="rounded-lg border border-border px-2.5 py-1 text-xs text-tsecondary hover:bg-surface2">Remove</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- API keys -->
+      <div data-tab-panel="apikeys" class="mt-6 hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-semibold">API keys</p>
+            <p class="text-xs text-tmuted">Used by telecom and platform engineers to call the classification REST endpoint (Story 3, FR1)</p>
+          </div>
+          <button onclick="slToast('New API key generated — copy it now, it won’t be shown again')" class="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-sm font-semibold text-bg hover:bg-accentStrong"><i data-lucide="key" class="h-4 w-4"></i> Create key</button>
+        </div>
+        <div class="space-y-3">
+          <div class="rounded-xl border border-border bg-surface p-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <p class="text-sm font-medium">Production gateway key</p>
+                <p class="mt-0.5 font-mono text-xs text-tmuted">sk_live_••••••••••••a91f · scope: classify, audit:read</p>
+              </div>
+              <span class="rounded-full bg-ham/15 px-2 py-0.5 text-[11px] font-semibold uppercase text-ham">Active</span>
+            </div>
+            <p class="mt-2 text-xs text-tmuted">Created Mar 2, 2026 by Jordan Lee · last used 38 seconds ago · 1,000,000 req/min ceiling (telecom-scale)</p>
+            <div class="mt-3 flex gap-2">
+              <button onclick="slToast('Key rotated — update your gateway configuration with the new value')" class="rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-tsecondary hover:bg-surface2">Rotate</button>
+              <button onclick="slToast('Revocation requires a second approver — request sent to Security')" class="rounded-lg border border-spam/30 bg-spam/10 px-3 py-1.5 text-xs font-medium text-spam hover:bg-spam/15">Revoke</button>
+            </div>
+          </div>
+          <div class="rounded-xl border border-border bg-surface p-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <p class="text-sm font-medium">Shadow-mode pilot key</p>
+                <p class="mt-0.5 font-mono text-xs text-tmuted">sk_test_••••••••••••2c08 · scope: classify (no-block)</p>
+              </div>
+              <span class="rounded-full bg-surface2 px-2 py-0.5 text-[11px] font-semibold uppercase text-tsecondary">Limited</span>
+            </div>
+            <p class="mt-2 text-xs text-tmuted">Created Feb 18, 2026 by Jordan Lee · last used 2 days ago · scoped to the Q3 2026 shadow pilot only</p>
+            <div class="mt-3 flex gap-2">
+              <button onclick="slToast('Key rotated — update your gateway configuration with the new value')" class="rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-tsecondary hover:bg-surface2">Rotate</button>
+              <button onclick="slToast('Revocation requires a second approver — request sent to Security')" class="rounded-lg border border-spam/30 bg-spam/10 px-3 py-1.5 text-xs font-medium text-spam hover:bg-spam/15">Revoke</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div data-tab-panel="team" class="mt-6 hidden space-y-4">
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <p class="text-sm font-semibold">Team &amp; allocation</p>
+          <p class="text-xs text-tmuted">Roles and time allocation from the resourcing plan (§10)</p>
+          <div class="mt-4 overflow-hidden rounded-lg border border-border">
+            <div class="grid grid-cols-12 gap-3 border-b border-border bg-surface2/60 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-tmuted">
+              <div class="col-span-4">Name</div>
+              <div class="col-span-4">Role</div>
+              <div class="col-span-2">Allocation</div>
+              <div class="col-span-2">Approval rights</div>
+            </div>
+            <div class="divide-y divide-border-soft text-sm">
+              <div class="grid grid-cols-12 items-center gap-3 px-4 py-3">
+                <div class="col-span-4 font-medium text-tprimary">Sankar Kumar Palaniappan</div>
+                <div class="col-span-4 text-tsecondary">Product / Project Owner</div>
+                <div class="col-span-2 font-mono text-xs text-tsecondary">100%</div>
+                <div class="col-span-2"><span class="rounded-full bg-accent/15 px-2 py-0.5 text-[11px] text-accent">Roadmap</span></div>
+              </div>
+              <div class="grid grid-cols-12 items-center gap-3 px-4 py-3">
+                <div class="col-span-4 font-medium text-tprimary">Devon Reyes</div>
+                <div class="col-span-4 text-tsecondary">NLP / ML Engineer</div>
+                <div class="col-span-2 font-mono text-xs text-tsecondary">100%</div>
+                <div class="col-span-2"><span class="rounded-full bg-ham/15 px-2 py-0.5 text-[11px] text-ham">Model promotion</span></div>
+              </div>
+              <div class="grid grid-cols-12 items-center gap-3 px-4 py-3">
+                <div class="col-span-4 font-medium text-tprimary">Jordan Lee</div>
+                <div class="col-span-4 text-tsecondary">Backend Engineer (API + routing)</div>
+                <div class="col-span-2 font-mono text-xs text-tsecondary">100%</div>
+                <div class="col-span-2"><span class="rounded-full bg-info/15 px-2 py-0.5 text-[11px] text-info">API keys</span></div>
+              </div>
+              <div class="grid grid-cols-12 items-center gap-3 px-4 py-3">
+                <div class="col-span-4 font-medium text-tprimary">Priya Nandakumar</div>
+                <div class="col-span-4 text-tsecondary">Security Engineer (audit, compliance, GDPR)</div>
+                <div class="col-span-2 font-mono text-xs text-tsecondary">0.5 FTE</div>
+                <div class="col-span-2"><span class="rounded-full bg-uncertain/15 px-2 py-0.5 text-[11px] text-uncertain">Thresholds, allowlist</span></div>
+              </div>
+              <div class="grid grid-cols-12 items-center gap-3 px-4 py-3">
+                <div class="col-span-4 font-medium text-tprimary">Aisha Mensah</div>
+                <div class="col-span-4 text-tsecondary">Analyst (human-in-the-loop review)</div>
+                <div class="col-span-2 font-mono text-xs text-tsecondary">0.25 FTE</div>
+                <div class="col-span-2"><span class="rounded-full bg-surface2 px-2 py-0.5 text-[11px] text-tmuted">Review only</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Approval modal -->
+  <div id="approval-modal" data-modal class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4">
+    <div class="w-full max-w-md rounded-xl border border-border bg-surface p-6 shadow-2xl">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-uncertain/15 text-uncertain"><i data-lucide="shield-alert" class="h-5 w-5"></i></div>
+      <h3 class="mt-4 text-base font-semibold">Submit threshold change for approval?</h3>
+      <p class="mt-1.5 text-sm leading-relaxed text-tsecondary">
+        You're requesting to change the quarantine confidence threshold to <span id="approval-value" class="font-mono text-tprimary">85%</span>.
+        This will be sent to the Security Engineer for review — changes that affect classification behavior require a
+        second approver before they take effect (§4.3 — "Requires human approval").
+      </p>
+      <div class="mt-6 flex justify-end gap-2">
+        <button data-modal-close class="rounded-lg border border-border px-4 py-2 text-sm font-medium text-tsecondary hover:bg-surface2">Cancel</button>
+        <button onclick="document.getElementById('approval-modal').classList.add('hidden'); slToast('Change request sent to Priya Nandakumar (Security Engineer) for approval');" class="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-bg hover:bg-accentStrong">Send for approval</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Allowlist modal -->
+  <div id="allowlist-modal" data-modal class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4">
+    <div class="w-full max-w-md rounded-xl border border-border bg-surface p-6 shadow-2xl">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 text-accent"><i data-lucide="user-plus" class="h-5 w-5"></i></div>
+      <h3 class="mt-4 text-base font-semibold">Add a trusted sender</h3>
+      <div class="mt-4 space-y-3 text-left">
+        <div>
+          <label class="block text-xs font-medium text-tsecondary">Sender ID or domain</label>
+          <input type="text" placeholder="e.g. ACME-BILLING or acme-notify.com" class="sl-focus mt-1.5 w-full rounded-lg border border-border bg-surface2 px-3.5 py-2.5 text-sm text-tprimary placeholder:text-tmuted focus:border-accent" />
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-tsecondary">Reason (required for the approval log)</label>
+          <textarea rows="2" placeholder="Why should this sender bypass spam scoring?" class="sl-focus mt-1.5 w-full rounded-lg border border-border bg-surface2 px-3.5 py-2.5 text-sm text-tprimary placeholder:text-tmuted focus:border-accent"></textarea>
+        </div>
+      </div>
+      <div class="mt-6 flex justify-end gap-2">
+        <button data-modal-close class="rounded-lg border border-border px-4 py-2 text-sm font-medium text-tsecondary hover:bg-surface2">Cancel</button>
+        <button onclick="document.getElementById('allowlist-modal').classList.add('hidden'); slToast('Allowlist request submitted — pending admin approval');" class="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-bg hover:bg-accentStrong">Submit for approval</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="sl-toast" class="rounded-lg border border-border bg-surface2 px-4 py-2.5 text-sm text-tprimary shadow-2xl">
+    <span data-toast-text></span>
+  </div>
+
+  <script src="../assets/app.js"></script>
+  <script>
+    document.getElementById('threshold-slider')?.addEventListener('input', function () {
+      document.getElementById('approval-value').textContent = this.value + '%';
+    });
+  </script>
+</body>
+</html>

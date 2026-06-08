@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ShieldLine — Mockup Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="assets/styles.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: '#0a0e16', surface: '#11161f', surface2: '#161c28', surface3: '#1d2433',
+          border: '#232b3a', accent: '#38bdf8', accentStrong: '#0ea5e9',
+          spam: '#f87171', ham: '#34d399', uncertain: '#fbbf24', info: '#818cf8',
+          tprimary: '#e6edf7', tsecondary: '#93a1b8', tmuted: '#5b6b85',
+        },
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+          mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        },
+      }
+    }
+  };
+</script>
+</head>
+<body class="bg-bg text-tprimary font-sans antialiased">
+
+  <!-- Top bar -->
+  <header class="border-b border-border bg-surface/70 backdrop-blur sticky top-0 z-30">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div class="flex items-center gap-2.5">
+        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 text-accent">
+          <i data-lucide="shield-check" class="h-5 w-5"></i>
+        </div>
+        <div class="leading-tight">
+          <p class="text-sm font-semibold">ShieldLine</p>
+          <p class="text-[11px] text-tmuted">Mockup hub · clickable prototype</p>
+        </div>
+      </div>
+      <a href="screens/02-dashboard.html" class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-bg hover:bg-accentStrong transition-colors">
+        Enter the console
+        <i data-lucide="arrow-right" class="h-4 w-4"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="border-b border-border">
+    <div class="mx-auto max-w-6xl px-6 py-14">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-tsecondary">
+        <i data-lucide="file-text" class="h-3.5 w-3.5 text-accent"></i>
+        Mockup of: SMS Spam Detection System — PRD v1.0
+      </span>
+      <h1 class="mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+        Real-time SMS spam &amp; phishing defense — <span class="text-accent">classified before delivery.</span>
+      </h1>
+      <p class="mt-4 max-w-2xl text-base leading-relaxed text-tsecondary">
+        An NLP-powered classification API scores every inbound SMS as <span class="font-mono text-ham">ham</span> or
+        <span class="font-mono text-spam">spam</span> in under 100ms using a Decision Tree model trained on TF‑IDF
+        features — quarantining malicious messages before they reach a phone, while a feedback loop and monthly
+        retraining pipeline keep it adapting to new spam vocabulary.
+      </p>
+      <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="text-2xl font-bold font-mono text-accent">96.59%</p>
+          <p class="mt-1 text-xs text-tsecondary">Test accuracy (Decision Tree)</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="text-2xl font-bold font-mono text-ham">93.50%</p>
+          <p class="mt-1 text-xs text-tsecondary">Test precision on spam class</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="text-2xl font-bold font-mono text-info">&lt;100ms</p>
+          <p class="mt-1 text-xs text-tsecondary">P99 classification latency</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="text-2xl font-bold font-mono text-uncertain">13.5%</p>
+          <p class="mt-1 text-xs text-tsecondary">Spam rate across SMS traffic</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personas -->
+  <section class="mx-auto max-w-6xl px-6 py-14">
+    <h2 class="text-lg font-semibold">Who sees what</h2>
+    <p class="mt-1 text-sm text-tsecondary">Four personas from the PRD's user stories, each with their own corner of the product.</p>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-info/15 text-info"><i data-lucide="shield-alert" class="h-5 w-5"></i></div>
+        <p class="mt-3 font-semibold">CISO / Security Manager</p>
+        <p class="mt-1 text-sm text-tsecondary">Wants visibility into the SMS threat landscape and confidence the filter is working. <span class="text-tmuted">— Story 1, 4</span></p>
+        <p class="mt-3 text-xs text-tmuted">Dashboard · Alerts · Live Feed</p>
+      </div>
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-ham/15 text-ham"><i data-lucide="briefcase" class="h-5 w-5"></i></div>
+        <p class="mt-3 font-semibold">Business Operations Manager</p>
+        <p class="mt-1 text-sm text-tsecondary">Needs a blocked legitimate message released fast, and a way to flag mistakes. <span class="text-tmuted">— Story 2</span></p>
+        <p class="mt-3 text-xs text-tmuted">Report a Misclassification · Quarantine</p>
+      </div>
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/15 text-accent"><i data-lucide="route" class="h-5 w-5"></i></div>
+        <p class="mt-3 font-semibold">Telecom / Platform Engineer</p>
+        <p class="mt-1 text-sm text-tsecondary">Integrates the classification API into routing infrastructure and watches its health. <span class="text-tmuted">— Story 3</span></p>
+        <p class="mt-3 text-xs text-tmuted">Dashboard · Settings (API keys)</p>
+      </div>
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-uncertain/15 text-uncertain"><i data-lucide="user-check" class="h-5 w-5"></i></div>
+        <p class="mt-3 font-semibold">ML / Review Analyst</p>
+        <p class="mt-1 text-sm text-tsecondary">Labels borderline messages within SLA and oversees model retraining and rollouts. <span class="text-tmuted">— Flow 5</span></p>
+        <p class="mt-3 text-xs text-tmuted">Review Queue · Model &amp; Retraining</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow map -->
+  <section class="border-y border-border bg-surface/40">
+    <div class="mx-auto max-w-6xl px-6 py-14">
+      <h2 class="text-lg font-semibold">Flow map</h2>
+      <p class="mt-1 text-sm text-tsecondary">The five user flows from PRD §3.2 — each maps to one or more screens below.</p>
+      <div class="mt-6 grid gap-4 lg:grid-cols-2">
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-accent">Flow 1 — Real-time classification</p>
+          <p class="mt-2 text-sm text-tsecondary leading-relaxed">SMS in → preprocess → TF‑IDF → Decision Tree → label + confidence → quarantine or deliver → audit log. <span class="font-mono text-tmuted">&lt;100ms</span></p>
+          <a href="screens/03-live-feed.html" class="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline">Watch the live feed <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i></a>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-ham">Flow 2 — Misclassification feedback loop</p>
+          <p class="mt-2 text-sm text-tsecondary leading-relaxed">User flags a wrong call → feedback record created → analyst confirms → correction queued for retraining.</p>
+          <a href="screens/07-report-issue.html" class="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-ham hover:underline">Open the report flow <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i></a>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-info">Flow 3 — Monthly model retraining</p>
+          <p class="mt-2 text-sm text-tsecondary leading-relaxed">Pull feedback + new messages → retrain → evaluate vs. holdout → promote if precision ≥93% &amp; recall ≥90%, else hold.</p>
+          <a href="screens/09-model-retraining.html" class="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-info hover:underline">See the retraining pipeline <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i></a>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-uncertain">Flow 4 — Admin monitoring &amp; alerting</p>
+          <p class="mt-2 text-sm text-tsecondary leading-relaxed">Dashboard tracks spam rate, false-positive rate, accuracy, latency → alerts on spikes or degradation → weekly report.</p>
+          <a href="screens/02-dashboard.html" class="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-uncertain hover:underline">View the dashboard <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i></a>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-5 lg:col-span-2">
+          <p class="text-xs font-semibold uppercase tracking-wide text-spam">Flow 5 — Human-in-the-loop review (low confidence)</p>
+          <p class="mt-2 text-sm text-tsecondary leading-relaxed">Messages scored 40–60% confidence are routed to an analyst queue (not auto-blocked) → reviewed within 4 business hours → label applied and added to the training queue immediately.</p>
+          <a href="screens/05-review-queue.html" class="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-spam hover:underline">Open the review queue <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screen directory -->
+  <section class="mx-auto max-w-6xl px-6 py-14">
+    <h2 class="text-lg font-semibold">All screens</h2>
+    <p class="mt-1 text-sm text-tsecondary">Ordered like a storyboard — open <span class="font-mono text-tprimary">index.html</span> any time to come back here.</p>
+    <ol class="mt-6 grid gap-3 sm:grid-cols-2">
+      <li class="rounded-xl border border-border bg-surface p-4 flex items-start gap-4">
+        <span class="font-mono text-sm text-tmuted">01</span>
+        <div class="flex-1">
+          <a href="screens/01-sign-in.html" class="font-medium hover:text-accent">Sign in</a>
+          <p class="mt-0.5 text-sm text-tsecondary">Security-console authentication for staff users.</p>
+        </div>
+      </li>
+      <li class="rounded-xl border border-border bg-surface p-4 flex items-start gap-4">
+        <span class="font-mono text-sm text-tmuted">02</span>
+        <div class="flex-1">
+          <a href="screens/02-dashboard.html" class="font-medium hover:text-accent">Security dashboard</a>
+          <p class="mt-0.5 text-sm text-tsecondary">North-star metrics, spam-rate trend, live alert banner. <span class="text-tmuted">FR7, Story 4</span></p>
+        </div>
+      </li>
+      <li class="rounded-xl border border-border bg-surface p-4 flex items-start gap-4">
+        <span class="font-mono text-sm text-tmuted">03</span>
+        <div class="flex-1">
+          <a href="screens/03-live-feed.html" class="font-medium hover:text-accent">Live classification feed</a>
+          <p class="mt-0.5 text-sm text-tsecondary">Streaming view of every message scored in real time. <span class="text-tmuted">Flow 1, FR1, FR2</span></p>
+        </div>
+      </li>
+      <li class="rounded-xl border border-border bg-surface p-4 flex items-start gap-4">
+        <span class="font-mono text-sm text-tmuted">04</span>
+        <div class="flex-1">
+          <a href="screens/04-quarantine.html" class="font-medium hover:text-accent">Quarantine queue</a>
+          <p class="mt-0.5 text-sm text-tsecondary">Held spam, 30-day retention, one-click release. <span class="text-tmuted">FR3, FR4, Story 2</span></p>
+        </div>
+      </li>
+      <li class="rounded-xl border border-border bg-surface p-4 flex items-start gap-4">
+        <span class="font-mono text-sm text-tmuted">05</span>
+        <div class="flex-1">
+          <a href="screens/05-review-queue.html" class="font-medium hover:text-accent">Review queue (uncertain)</a>
+          <p class="mt-0.5 text-sm text-tsecondary">40–60% confidence messages awaiting an analyst label. <span class="text-tmuted">Flow 5, FR6</span></p>
+        </div>
+      </li>
+      <li class="rounded-xl border border-border bg-surface p-4 flex items-start gap-4">
+        <span class="font-mono text-sm text-tmuted">06</span>
+        <div class="flex-1">
+          <a href="screens/06-message-detail.html" class="font-medium hover:text-accent">Message detail &amp; explainability</a>
+          <p class="mt-0.5 text-sm text-tsecondary">Hash, audit trail, and the top contributing TF‑IDF terms. <span class="text-tmuted">§4.4 Explainability</span></p>
+        </div>
+      </li>
+      <li class="rounded-xl border border-border bg-surface p-4 flex items-start gap-4">
+        <span class="font-mono text-sm text-tmuted">07</span>
+        <div class="flex-1">
+          <a href="screens/07-report-issue.html" class="font-medium hover:text-accent">Report a misclassification</a>
+          <p class="mt-0.5 text-sm text-tsecondary">End-user portal for flagging a wrongly blocked message. <span class="text-tmuted">Flow 2, Story 2</span></p>
+        </div>
+      </li>
+      <li class="rounded-xl border border-border bg-surface p-4 flex items-start gap-4">
+        <span class="font-mono text-sm text-tmuted">08</span>
+        <div class="flex-1">
+          <a href="screens/08-alerts.html" class="font-medium hover:text-accent">Alerts &amp; campaigns</a>
+          <p class="mt-0.5 text-sm text-tsecondary">Spike detection, weekly security report, CSV export. <span class="text-tmuted">FR7, Story 4</span></p>
+        </div>
+      </li>
+      <li class="rounded-xl border border-border bg-surface p-4 flex items-start gap-4">
+        <span class="font-mono text-sm text-tmuted">09</span>
+        <div class="flex-1">
+          <a href="screens/09-model-retraining.html" class="font-medium hover:text-accent">Model &amp; retraining</a>
+          <p class="mt-0.5 text-sm text-tsecondary">4-model comparison, accuracy gate, version history. <span class="text-tmuted">Flow 3, FR5, §5.1</span></p>
+        </div>
+      </li>
+      <li class="rounded-xl border border-border bg-surface p-4 flex items-start gap-4">
+        <span class="font-mono text-sm text-tmuted">10</span>
+        <div class="flex-1">
+          <a href="screens/10-settings.html" class="font-medium hover:text-accent">Settings &amp; governance</a>
+          <p class="mt-0.5 text-sm text-tsecondary">Thresholds, sender allowlist, API keys — gated by approval. <span class="text-tmuted">§4.3</span></p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <footer class="border-t border-border">
+    <div class="mx-auto max-w-6xl px-6 py-8 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-sm text-tsecondary">Static, click-through prototype — no backend. See <a href="README.md" class="text-accent hover:underline">README.md</a> for assumptions, open questions, and PRD traceability.</p>
+      <p class="text-xs text-tmuted">Generated from <span class="font-mono">SMS-SpamClassifier-PRD.pdf</span> · v1.0</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

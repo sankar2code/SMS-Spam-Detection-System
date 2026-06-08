@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Model & Retraining — ShieldLine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { bg: '#0a0e16', surface: '#11161f', surface2: '#161c28', surface3: '#1d2433',
+      border: '#232b3a', accent: '#38bdf8', accentStrong: '#0ea5e9',
+      spam: '#f87171', ham: '#34d399', uncertain: '#fbbf24', info: '#818cf8',
+      tprimary: '#e6edf7', tsecondary: '#93a1b8', tmuted: '#5b6b85' },
+    fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], mono: ['JetBrains Mono','ui-monospace','monospace'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-tprimary font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-border bg-surface transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-border px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 text-accent"><i data-lucide="shield-check" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-semibold text-tprimary">ShieldLine</p><p class="text-[11px] text-tmuted">SMS Threat Defense</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Monitor</p>
+      <a href="02-dashboard.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="layout-dashboard" class="sl-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-live-feed.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="activity" class="sl-nav-icon h-4 w-4"></i> Live feed <span class="relative ml-auto flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ham opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-ham"></span></span></a>
+      <a href="08-alerts.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="bell-ring" class="sl-nav-icon h-4 w-4"></i> Alerts &amp; campaigns <span class="ml-auto rounded-full bg-spam/15 px-1.5 py-0.5 text-[10px] font-semibold text-spam">2</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Triage</p>
+      <a href="04-quarantine.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="shield-alert" class="sl-nav-icon h-4 w-4"></i> Quarantine <span class="ml-auto rounded-full bg-surface3 px-1.5 py-0.5 text-[10px] font-semibold text-tsecondary">128</span></a>
+      <a href="05-review-queue.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="list-checks" class="sl-nav-icon h-4 w-4"></i> Review queue <span class="ml-auto rounded-full bg-uncertain/15 px-1.5 py-0.5 text-[10px] font-semibold text-uncertain">14</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">System</p>
+      <a href="09-model-retraining.html" class="sl-nav-link is-active flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="brain-circuit" class="sl-nav-icon h-4 w-4"></i> Model &amp; retraining</a>
+      <a href="10-settings.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="settings" class="sl-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-border p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-tmuted hover:bg-surface2 hover:text-tsecondary"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-uncertain/20 text-xs font-semibold text-uncertain">DR</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-tprimary">Devon Reyes</p><p class="text-[11px] text-tmuted">ML / Review Analyst</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-border bg-bg/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-border p-2 text-tsecondary hover:bg-surface2 lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <div>
+        <h1 class="text-lg font-semibold">Model &amp; retraining</h1>
+        <p class="text-xs text-tmuted">Flow 3 · monthly retraining with an accuracy gate before any promotion (FR5)</p>
+      </div>
+    </div>
+    <span class="hidden items-center gap-1.5 rounded-full border border-ham/30 bg-ham/10 px-3 py-1.5 text-xs font-medium text-ham sm:inline-flex">
+      <i data-lucide="check-circle-2" class="h-3.5 w-3.5"></i> Production: decision-tree-v2.4
+    </span>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-6xl space-y-6">
+
+      <!-- Current model -->
+      <div class="rounded-xl border border-ham/25 bg-ham/[0.05] p-5">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div class="flex items-start gap-4">
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-ham/15 text-ham"><i data-lucide="cpu" class="h-5 w-5"></i></div>
+            <div>
+              <div class="flex items-center gap-2">
+                <p class="text-base font-semibold">Decision Tree (before pruning) — v2.4</p>
+                <span class="rounded-full bg-ham/15 px-2 py-0.5 text-[10px] font-semibold uppercase text-ham">In production</span>
+              </div>
+              <p class="mt-1 text-sm text-tsecondary">Recommended model per §5.2 — best balance of recall (catching spam) and precision (not over-blocking) for a security use case. Promoted Jun 1, 2026.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div class="rounded-lg border border-border bg-surface p-3"><p class="text-xs text-tmuted">Test accuracy</p><p class="mt-1 font-mono text-lg font-bold text-ham">96.59%</p></div>
+          <div class="rounded-lg border border-border bg-surface p-3"><p class="text-xs text-tmuted">Test precision (spam)</p><p class="mt-1 font-mono text-lg font-bold">93.50%</p></div>
+          <div class="rounded-lg border border-border bg-surface p-3"><p class="text-xs text-tmuted">Test recall (spam)</p><p class="mt-1 font-mono text-lg font-bold">91.50%</p></div>
+          <div class="rounded-lg border border-border bg-surface p-3"><p class="text-xs text-tmuted">Trained on</p><p class="mt-1 font-mono text-lg font-bold">5,572 msgs</p></div>
+        </div>
+      </div>
+
+      <!-- Model comparison -->
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <p class="text-sm font-semibold">Full model comparison (§5.1)</p>
+        <p class="text-xs text-tmuted">Four candidates evaluated on a 70/30 train/test split of the 5,572-message corpus (4,825 ham · 747 spam)</p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full min-w-[640px] border-collapse text-sm">
+            <thead>
+              <tr class="border-b border-border text-left text-[11px] uppercase tracking-wider text-tmuted">
+                <th class="py-2 pr-4 font-semibold">Model</th>
+                <th class="py-2 pr-4 font-semibold">Train acc.</th>
+                <th class="py-2 pr-4 font-semibold">Test acc.</th>
+                <th class="py-2 pr-4 font-semibold">Test recall</th>
+                <th class="py-2 pr-4 font-semibold">Test precision</th>
+                <th class="py-2 font-semibold">Verdict</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border-soft font-mono text-tsecondary">
+              <tr class="bg-ham/[0.04]">
+                <td class="py-3 pr-4 font-sans font-medium text-tprimary">Decision Tree <span class="text-xs text-tmuted font-sans">(before pruning)</span></td>
+                <td class="py-3 pr-4">97.22%</td>
+                <td class="py-3 pr-4 text-tprimary">96.59%</td>
+                <td class="py-3 pr-4 text-ham">91.50%</td>
+                <td class="py-3 pr-4 text-tprimary">93.50%</td>
+                <td class="py-3"><span class="rounded-full bg-ham/15 px-2 py-0.5 text-[11px] font-sans font-semibold text-ham">Selected — best balance</span></td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-sans font-medium text-tprimary">Decision Tree <span class="text-xs text-tmuted font-sans">— pruned</span></td>
+                <td class="py-3 pr-4">96.75%</td>
+                <td class="py-3 pr-4">94.79%</td>
+                <td class="py-3 pr-4">89.90%</td>
+                <td class="py-3 pr-4">88.18%</td>
+                <td class="py-3"><span class="rounded-full bg-surface2 px-2 py-0.5 text-[11px] font-sans text-tmuted">Lower precision</span></td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-sans font-medium text-tprimary">Random Forest <span class="text-xs text-tmuted font-sans">(before pruning)</span></td>
+                <td class="py-3 pr-4">95.83%</td>
+                <td class="py-3 pr-4">95.42%</td>
+                <td class="py-3 pr-4 text-spam">82.89%</td>
+                <td class="py-3 pr-4 text-ham">97.49%</td>
+                <td class="py-3"><span class="rounded-full bg-spam/15 px-2 py-0.5 text-[11px] font-sans font-semibold text-spam">Misses 17% of spam</span></td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-sans font-medium text-tprimary">Random Forest <span class="text-xs text-tmuted font-sans">— pruned</span></td>
+                <td class="py-3 pr-4">97.49%</td>
+                <td class="py-3 pr-4">94.70%</td>
+                <td class="py-3 pr-4">85.31%</td>
+                <td class="py-3 pr-4">90.78%</td>
+                <td class="py-3"><span class="rounded-full bg-surface2 px-2 py-0.5 text-[11px] font-sans text-tmuted">Lower recall</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-4 flex items-start gap-2.5 rounded-lg border border-border bg-surface2 p-3.5">
+          <i data-lucide="lightbulb" class="mt-0.5 h-4 w-4 flex-shrink-0 text-accent"></i>
+          <p class="text-sm text-tsecondary"><span class="font-medium text-tprimary">Why this trade-off is acceptable:</span> a 93.5% precision means roughly 6.5% of legitimate messages may be quarantined — but because spam is held (not deleted) and false positives are released within 1 business hour, the security upside of catching 91.5% of spam outweighs that inconvenience cost (§5.2).</p>
+        </div>
+      </div>
+
+      <!-- Retraining pipeline -->
+      <div class="grid gap-4 lg:grid-cols-5">
+        <div class="rounded-xl border border-border bg-surface p-5 lg:col-span-3">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-semibold">Last retraining run — Jun 1, 2026</p>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-ham/15 px-2.5 py-1 text-xs font-semibold text-ham"><i data-lucide="check" class="h-3 w-3"></i> Passed accuracy gate</span>
+          </div>
+          <ol class="mt-4 space-y-0">
+            <li class="relative flex gap-4 pb-5">
+              <div class="relative flex flex-col items-center"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-info/15 text-info"><i data-lucide="database" class="h-3.5 w-3.5"></i></span><span class="absolute top-6 h-full w-px bg-border"></span></div>
+              <div class="flex-1"><p class="text-sm font-medium">Pulled training data</p><p class="text-xs text-tmuted">1,842 confirmed feedback corrections + last 30 days of classified messages → corpus grew to <span class="font-mono">7,414</span> labelled examples</p></div>
+            </li>
+            <li class="relative flex gap-4 pb-5">
+              <div class="relative flex flex-col items-center"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-info/15 text-info"><i data-lucide="refresh-cw" class="h-3.5 w-3.5"></i></span><span class="absolute top-6 h-full w-px bg-border"></span></div>
+              <div class="flex-1"><p class="text-sm font-medium">Retrained Decision Tree on expanded corpus</p><p class="text-xs text-tmuted">Completed in 2h 41m · within the 4-hour monthly window (§4.4 Performance)</p></div>
+            </li>
+            <li class="relative flex gap-4 pb-5">
+              <div class="relative flex flex-col items-center"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-uncertain/15 text-uncertain"><i data-lucide="scale" class="h-3.5 w-3.5"></i></span><span class="absolute top-6 h-full w-px bg-border"></span></div>
+              <div class="flex-1">
+                <p class="text-sm font-medium">Evaluated against accuracy gate</p>
+                <div class="mt-2 grid grid-cols-2 gap-2 max-w-xs">
+                  <div class="rounded-lg border border-ham/25 bg-ham/10 px-3 py-2"><p class="text-[11px] text-tmuted">Precision (need ≥ 93%)</p><p class="font-mono text-sm font-semibold text-ham">93.8% ✓</p></div>
+                  <div class="rounded-lg border border-ham/25 bg-ham/10 px-3 py-2"><p class="text-[11px] text-tmuted">Recall (need ≥ 90%)</p><p class="font-mono text-sm font-semibold text-ham">91.2% ✓</p></div>
+                </div>
+              </div>
+            </li>
+            <li class="relative flex gap-4">
+              <div class="relative flex flex-col items-center"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-ham/15 text-ham"><i data-lucide="rocket" class="h-3.5 w-3.5"></i></span></div>
+              <div class="flex-1"><p class="text-sm font-medium">Promoted to production as v2.4</p><p class="text-xs text-tmuted">Approved by Devon Reyes (ML Engineer) · v2.3 archived with rollback capability — human approval required per §4.3</p></div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="rounded-xl border border-border bg-surface p-5 lg:col-span-2">
+          <p class="text-sm font-semibold">Pipeline schedule</p>
+          <div class="mt-3 space-y-3 text-sm">
+            <div class="flex items-center justify-between rounded-lg border border-border bg-surface2 px-3.5 py-2.5">
+              <span class="text-tsecondary">Next scheduled run</span>
+              <span class="font-mono text-tprimary">Jul 1, 2026 · 04:00 UTC</span>
+            </div>
+            <div class="flex items-center justify-between rounded-lg border border-border bg-surface2 px-3.5 py-2.5">
+              <span class="text-tsecondary">Promotion gate</span>
+              <span class="font-mono text-tprimary">precision ≥ 93% &amp; recall ≥ 90%</span>
+            </div>
+            <div class="flex items-center justify-between rounded-lg border border-border bg-surface2 px-3.5 py-2.5">
+              <span class="text-tsecondary">If gate fails</span>
+              <span class="text-right text-xs text-tsecondary">Hold for manual review, alert ML team</span>
+            </div>
+          </div>
+          <button onclick="slToast('Retraining run queued — you’ll be notified when evaluation completes')" class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-accent/30 bg-accent/10 px-4 py-2.5 text-sm font-medium text-accent hover:bg-accent/15">
+            <i data-lucide="play" class="h-4 w-4"></i> Trigger retraining run now
+          </button>
+        </div>
+      </div>
+
+      <!-- Version history -->
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <p class="text-sm font-semibold">Version history</p>
+        <p class="text-xs text-tmuted">Every promoted (and rejected) version is retained with rollback capability</p>
+        <div class="mt-4 space-y-2.5">
+          <div class="flex flex-wrap items-center gap-3 rounded-lg border border-ham/25 bg-ham/[0.04] px-4 py-3">
+            <span class="font-mono text-sm font-semibold text-tprimary">v2.4</span>
+            <span class="rounded-full bg-ham/15 px-2 py-0.5 text-[10px] font-semibold uppercase text-ham">Active</span>
+            <span class="text-xs text-tsecondary">Promoted Jun 1, 2026 · precision 93.8% · recall 91.2%</span>
+            <span class="ml-auto text-xs text-tmuted">Current production model</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 rounded-lg border border-border px-4 py-3">
+            <span class="font-mono text-sm font-semibold text-tprimary">v2.3</span>
+            <span class="rounded-full bg-surface2 px-2 py-0.5 text-[10px] font-semibold uppercase text-tsecondary">Archived</span>
+            <span class="text-xs text-tsecondary">Promoted May 1, 2026 · precision 93.2% · recall 90.6%</span>
+            <button onclick="slToast('Rollback to v2.3 requires ML engineer + security sign-off — request sent')" class="ml-auto rounded-lg border border-border px-3 py-1 text-xs font-medium text-tsecondary hover:bg-surface2">Request rollback</button>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 rounded-lg border border-border px-4 py-3">
+            <span class="font-mono text-sm font-semibold text-tprimary">v2.2</span>
+            <span class="rounded-full bg-surface2 px-2 py-0.5 text-[10px] font-semibold uppercase text-tsecondary">Archived</span>
+            <span class="text-xs text-tsecondary">Promoted Apr 1, 2026 · precision 92.9% · recall 90.1%</span>
+            <button onclick="slToast('Rollback to v2.2 requires ML engineer + security sign-off — request sent')" class="ml-auto rounded-lg border border-border px-3 py-1 text-xs font-medium text-tsecondary hover:bg-surface2">Request rollback</button>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 rounded-lg border border-spam/25 bg-spam/[0.04] px-4 py-3">
+            <span class="font-mono text-sm font-semibold text-tprimary">v2.1-rc</span>
+            <span class="rounded-full bg-spam/15 px-2 py-0.5 text-[10px] font-semibold uppercase text-spam">Rejected</span>
+            <span class="text-xs text-tsecondary">Evaluated Mar 1, 2026 · recall 89.3% — below the 90% gate; v2.0 retained, ML team alerted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div id="sl-toast" class="rounded-lg border border-border bg-surface2 px-4 py-2.5 text-sm text-tprimary shadow-2xl">
+    <span data-toast-text></span>
+  </div>
+
+  <script src="../assets/app.js"></script>
+</body>
+</html>

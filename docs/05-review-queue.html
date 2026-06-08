@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Review Queue — ShieldLine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { bg: '#0a0e16', surface: '#11161f', surface2: '#161c28', surface3: '#1d2433',
+      border: '#232b3a', accent: '#38bdf8', accentStrong: '#0ea5e9',
+      spam: '#f87171', ham: '#34d399', uncertain: '#fbbf24', info: '#818cf8',
+      tprimary: '#e6edf7', tsecondary: '#93a1b8', tmuted: '#5b6b85' },
+    fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], mono: ['JetBrains Mono','ui-monospace','monospace'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-tprimary font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-border bg-surface transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-border px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 text-accent"><i data-lucide="shield-check" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-semibold text-tprimary">ShieldLine</p><p class="text-[11px] text-tmuted">SMS Threat Defense</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Monitor</p>
+      <a href="02-dashboard.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="layout-dashboard" class="sl-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-live-feed.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="activity" class="sl-nav-icon h-4 w-4"></i> Live feed <span class="relative ml-auto flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ham opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-ham"></span></span></a>
+      <a href="08-alerts.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="bell-ring" class="sl-nav-icon h-4 w-4"></i> Alerts &amp; campaigns <span class="ml-auto rounded-full bg-spam/15 px-1.5 py-0.5 text-[10px] font-semibold text-spam">2</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Triage</p>
+      <a href="04-quarantine.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="shield-alert" class="sl-nav-icon h-4 w-4"></i> Quarantine <span class="ml-auto rounded-full bg-surface3 px-1.5 py-0.5 text-[10px] font-semibold text-tsecondary">128</span></a>
+      <a href="05-review-queue.html" class="sl-nav-link is-active flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="list-checks" class="sl-nav-icon h-4 w-4"></i> Review queue <span class="ml-auto rounded-full bg-uncertain/15 px-1.5 py-0.5 text-[10px] font-semibold text-uncertain">14</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">System</p>
+      <a href="09-model-retraining.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="brain-circuit" class="sl-nav-icon h-4 w-4"></i> Model &amp; retraining</a>
+      <a href="10-settings.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="settings" class="sl-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-border p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-tmuted hover:bg-surface2 hover:text-tsecondary"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-uncertain/20 text-xs font-semibold text-uncertain">DR</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-tprimary">Devon Reyes</p><p class="text-[11px] text-tmuted">Review Analyst</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-border bg-bg/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-border p-2 text-tsecondary hover:bg-surface2 lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <div>
+        <h1 class="text-lg font-semibold">Review queue</h1>
+        <p class="text-xs text-tmuted">Flow 5 · 40–60% confidence messages, routed to a human instead of auto-blocked</p>
+      </div>
+    </div>
+    <span class="hidden items-center gap-1.5 rounded-full border border-uncertain/30 bg-uncertain/10 px-3 py-1.5 text-xs font-medium text-uncertain sm:inline-flex">
+      <i data-lucide="hourglass" class="h-3.5 w-3.5"></i> SLA: label within 4 business hours
+    </span>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-6xl space-y-4">
+
+      <!-- Summary -->
+      <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="text-xs text-tsecondary">Awaiting a label</p>
+          <p class="mt-1.5 text-xl font-bold font-mono">14</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="text-xs text-tsecondary">Avg. time in queue</p>
+          <p class="mt-1.5 text-xl font-bold font-mono">1h 12m</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="text-xs text-tsecondary">Approaching SLA (&lt; 30m)</p>
+          <p class="mt-1.5 text-xl font-bold font-mono text-spam">2</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="text-xs text-tsecondary">Share of total traffic</p>
+          <p class="mt-1.5 text-xl font-bold font-mono text-ham">0.31%</p>
+          <p class="text-[11px] text-tmuted">Trigger for retraining: &gt; 5%</p>
+        </div>
+      </div>
+
+      <!-- Split view -->
+      <div class="grid gap-4 lg:grid-cols-5">
+        <!-- List -->
+        <div class="overflow-hidden rounded-xl border border-border bg-surface lg:col-span-2">
+          <div class="border-b border-border px-4 py-3">
+            <p class="text-sm font-semibold">Queue — oldest first</p>
+            <p class="text-xs text-tmuted">Click a message to review and label it</p>
+          </div>
+          <ul id="queue-list" class="max-h-[640px] divide-y divide-border-soft overflow-y-auto"></ul>
+        </div>
+
+        <!-- Detail -->
+        <div id="detail-pane" class="rounded-xl border border-border bg-surface p-6 lg:col-span-3"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div id="sl-toast" class="rounded-lg border border-border bg-surface2 px-4 py-2.5 text-sm text-tprimary shadow-2xl">
+    <span data-toast-text></span>
+  </div>
+
+  <script src="../assets/app.js"></script>
+  <script>
+    const QUEUE = [
+      { id: 1, sender: 'ACME-SHIP', conf: 52.0, queued: '3h 41m', remaining: '0h 19m', urgency: 'critical',
+        text: 'Your order #48217 has shipped — track it here: trk.acme-deliveries.co/4q1z. Reply STOP to opt out.',
+        terms: ['TRACK', 'LINK', 'REPLY STOP'], hash: 'sha256:7c41af…b209' },
+      { id: 2, sender: 'SUB-NOTIFY', conf: 47.5, queued: '2h 05m', remaining: '1h 55m', urgency: 'warning',
+        text: 'Final reminder: your subscription renews tomorrow at £9.99/mo. Manage or cancel anytime in account settings.',
+        terms: ['REMINDER', 'RENEW', 'CANCEL'], hash: 'sha256:0a92e4…7d18' },
+      { id: 3, sender: 'PARCEL-NOW', conf: 55.3, queued: '0h 38m', remaining: '3h 22m', urgency: 'ok',
+        text: 'You’ve got a delivery attempt today between 1–3pm. Reschedule or confirm a safe place: dlv.re/9k2x',
+        terms: ['DELIVERY', 'LINK', 'CONFIRM'], hash: 'sha256:bb471c…44aa' },
+      { id: 4, sender: 'OPTIFIRST', conf: 44.2, queued: '1h 12m', remaining: '2h 48m', urgency: 'ok',
+        text: 'Reminder: your annual eye test is due — book online or call the practice to schedule: optifirst.health/book',
+        terms: ['BOOK', 'REMINDER', 'SCHEDULE'], hash: 'sha256:e6190d…fc52' },
+      { id: 5, sender: 'VERIFY-CODE', conf: 58.9, queued: '0h 22m', remaining: '3h 38m', urgency: 'ok',
+        text: 'Your verification code is 552190. This code expires in 5 minutes. Never share it with anyone.',
+        terms: ['CODE', 'VERIFY', 'EXPIRES'], hash: 'sha256:9d02b8…1e6c' },
+      { id: 6, sender: 'TRAINING-Q3', conf: 49.6, queued: '2h 50m', remaining: '1h 10m', urgency: 'warning',
+        text: 'Limited slots remaining for the Q3 product training — reserve yours before Friday: training.acme.io/reserve',
+        terms: ['LIMITED', 'RESERVE', 'BEFORE'], hash: 'sha256:42f7aa…c930' },
+    ];
+
+    let selectedId = QUEUE[0].id;
+
+    function urgencyClasses(u) {
+      if (u === 'critical') return { dot: 'bg-spam', text: 'text-spam', ring: 'ring-spam/30' };
+      if (u === 'warning') return { dot: 'bg-uncertain', text: 'text-uncertain', ring: 'ring-uncertain/30' };
+      return { dot: 'bg-ham', text: 'text-ham', ring: 'ring-ham/20' };
+    }
+
+    function renderList() {
+      const list = document.getElementById('queue-list');
+      list.innerHTML = QUEUE.map((m) => {
+        const u = urgencyClasses(m.urgency);
+        const active = m.id === selectedId;
+        return `
+        <li>
+          <button onclick="selectMessage(${m.id})" class="flex w-full items-start gap-3 px-4 py-3.5 text-left transition-colors hover:bg-surface2/60 ${active ? 'bg-surface2/80 border-l-2 border-accent' : 'border-l-2 border-transparent'}">
+            <span class="mt-1.5 inline-flex h-2 w-2 flex-shrink-0 rounded-full ${u.dot}"></span>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between gap-2">
+                <span class="font-mono text-xs text-tsecondary">${m.sender}</span>
+                <span class="font-mono text-xs ${u.text}">${m.remaining} left</span>
+              </div>
+              <p class="mt-1 truncate text-sm text-tsecondary">"${m.text}"</p>
+              <div class="mt-2 flex items-center gap-2">
+                <div class="sl-meter w-20"><span style="width:${m.conf}%; background:var(--uncertain)"></span></div>
+                <span class="font-mono text-[11px] text-tmuted">${m.conf.toFixed(1)}% confidence</span>
+              </div>
+            </div>
+          </button>
+        </li>`;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    function renderDetail() {
+      const pane = document.getElementById('detail-pane');
+      const m = QUEUE.find((x) => x.id === selectedId);
+      if (!m) {
+        pane.innerHTML = `
+          <div class="flex h-full flex-col items-center justify-center gap-3 py-20 text-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-ham/15 text-ham"><i data-lucide="check-check" class="h-6 w-6"></i></div>
+            <p class="text-sm font-semibold">Queue cleared for now</p>
+            <p class="max-w-xs text-sm text-tmuted">Every uncertain message has been labelled and sent straight to the training queue. New arrivals will appear here automatically.</p>
+          </div>`;
+        lucide.createIcons();
+        return;
+      }
+      const u = urgencyClasses(m.urgency);
+      pane.innerHTML = `
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <span class="inline-flex items-center gap-1.5 rounded-full ${u.text} bg-uncertain/10 px-2.5 py-1 text-xs font-semibold uppercase">
+              <i data-lucide="help-circle" class="h-3.5 w-3.5"></i> Uncertain · ${m.conf.toFixed(1)}% confidence
+            </span>
+            <p class="mt-3 font-mono text-xs text-tmuted">${m.hash}</p>
+          </div>
+          <div class="text-right">
+            <p class="text-xs text-tmuted">Time remaining in SLA</p>
+            <p class="font-mono text-lg font-bold ${u.text}">${m.remaining}</p>
+          </div>
+        </div>
+
+        <div class="mt-5 rounded-lg border border-border bg-surface2 p-4">
+          <p class="text-xs font-semibold uppercase tracking-wide text-tmuted">From ${m.sender}</p>
+          <p class="mt-2 text-base leading-relaxed text-tprimary">"${m.text}"</p>
+        </div>
+
+        <div class="mt-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-tmuted">Why the model is unsure</p>
+          <p class="mt-1.5 text-sm text-tsecondary">Confidence sits inside the 40–60% band — the message contains terms that appear often in <em>both</em> spam and legitimate traffic, so the Decision Tree can't separate it confidently.</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            ${m.terms.map((t) => `<span class="rounded-full border border-border bg-surface px-2.5 py-1 font-mono text-xs text-tsecondary">${t}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-col gap-2 sm:flex-row">
+          <button onclick="labelMessage('ham')" class="flex flex-1 items-center justify-center gap-2 rounded-lg bg-ham px-4 py-2.5 text-sm font-semibold text-bg hover:brightness-110">
+            <i data-lucide="check" class="h-4 w-4"></i> Label as ham — deliver normally
+          </button>
+          <button onclick="labelMessage('spam')" class="flex flex-1 items-center justify-center gap-2 rounded-lg bg-spam px-4 py-2.5 text-sm font-semibold text-bg hover:brightness-110">
+            <i data-lucide="shield-x" class="h-4 w-4"></i> Label as spam — quarantine
+          </button>
+        </div>
+        <p class="mt-3 text-center text-xs text-tmuted">Your label is applied immediately and added to the next retraining run (Flow 5).</p>
+      `;
+      lucide.createIcons();
+    }
+
+    function selectMessage(id) {
+      selectedId = id;
+      renderList();
+      renderDetail();
+    }
+
+    function labelMessage(label) {
+      const m = QUEUE.find((x) => x.id === selectedId);
+      if (!m) return;
+      const idx = QUEUE.indexOf(m);
+      QUEUE.splice(idx, 1);
+      slToast(`Labelled "${m.sender}" as ${label} · added to the training queue immediately`);
+      selectedId = QUEUE.length ? QUEUE[Math.min(idx, QUEUE.length - 1)].id : null;
+      renderList();
+      renderDetail();
+    }
+
+    renderList();
+    renderDetail();
+  </script>
+</body>
+</html>

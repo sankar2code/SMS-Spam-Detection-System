@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Security Dashboard — ShieldLine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { bg: '#0a0e16', surface: '#11161f', surface2: '#161c28', surface3: '#1d2433',
+      border: '#232b3a', accent: '#38bdf8', accentStrong: '#0ea5e9',
+      spam: '#f87171', ham: '#34d399', uncertain: '#fbbf24', info: '#818cf8',
+      tprimary: '#e6edf7', tsecondary: '#93a1b8', tmuted: '#5b6b85' },
+    fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], mono: ['JetBrains Mono','ui-monospace','monospace'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-tprimary font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-border bg-surface transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-border px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 text-accent"><i data-lucide="shield-check" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-semibold text-tprimary">ShieldLine</p><p class="text-[11px] text-tmuted">SMS Threat Defense</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Monitor</p>
+      <a href="02-dashboard.html" class="sl-nav-link is-active flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="layout-dashboard" class="sl-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-live-feed.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="activity" class="sl-nav-icon h-4 w-4"></i> Live feed <span class="relative ml-auto flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ham opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-ham"></span></span></a>
+      <a href="08-alerts.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="bell-ring" class="sl-nav-icon h-4 w-4"></i> Alerts &amp; campaigns <span class="ml-auto rounded-full bg-spam/15 px-1.5 py-0.5 text-[10px] font-semibold text-spam">2</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Triage</p>
+      <a href="04-quarantine.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="shield-alert" class="sl-nav-icon h-4 w-4"></i> Quarantine <span class="ml-auto rounded-full bg-surface3 px-1.5 py-0.5 text-[10px] font-semibold text-tsecondary">128</span></a>
+      <a href="05-review-queue.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="list-checks" class="sl-nav-icon h-4 w-4"></i> Review queue <span class="ml-auto rounded-full bg-uncertain/15 px-1.5 py-0.5 text-[10px] font-semibold text-uncertain">14</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">System</p>
+      <a href="09-model-retraining.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="brain-circuit" class="sl-nav-icon h-4 w-4"></i> Model &amp; retraining</a>
+      <a href="10-settings.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="settings" class="sl-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-border p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-tmuted hover:bg-surface2 hover:text-tsecondary"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-info/20 text-xs font-semibold text-info">PN</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-tprimary">Priya Nandakumar</p><p class="text-[11px] text-tmuted">IT Security Manager</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-border bg-bg/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-border p-2 text-tsecondary hover:bg-surface2 lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <div>
+        <h1 class="text-lg font-semibold">Security dashboard</h1>
+        <p class="text-xs text-tmuted">Real-time view of SMS classification across Acme Mobile</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="hidden items-center gap-1.5 rounded-lg border border-border bg-surface px-3 py-1.5 text-sm text-tsecondary sm:flex">
+        <i data-lucide="calendar" class="h-3.5 w-3.5 text-tmuted"></i> Last 24 hours <i data-lucide="chevron-down" class="h-3.5 w-3.5 text-tmuted"></i>
+      </div>
+      <button onclick="slToast('Exporting last 24 hours of metrics to CSV for SIEM ingestion…')" class="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface px-3 py-1.5 text-sm font-medium text-tsecondary hover:bg-surface2 hover:text-tprimary">
+        <i data-lucide="download" class="h-3.5 w-3.5"></i> <span class="hidden sm:inline">Export CSV</span>
+      </button>
+      <button class="relative rounded-lg border border-border bg-surface p-2 text-tsecondary hover:bg-surface2"><i data-lucide="bell" class="h-4 w-4"></i><span class="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-spam text-[10px] font-bold text-bg">2</span></button>
+    </div>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-6xl space-y-6">
+
+      <!-- Alert banner -->
+      <div class="flex items-start gap-3 rounded-xl border border-uncertain/30 bg-uncertain/10 p-4">
+        <i data-lucide="trending-up" class="mt-0.5 h-5 w-5 flex-shrink-0 text-uncertain"></i>
+        <div class="flex-1">
+          <p class="text-sm font-semibold text-tprimary">Possible spam campaign detected</p>
+          <p class="mt-0.5 text-sm text-tsecondary">Spam rate is <span class="font-mono font-semibold text-uncertain">+24%</span> above the 7‑day rolling average as of <span class="font-mono">14:32 today</span> — this crosses the FR7 alert threshold (&gt;20%). Two related alerts are open.</p>
+        </div>
+        <a href="08-alerts.html" class="flex-shrink-0 rounded-lg border border-uncertain/40 bg-bg/40 px-3 py-1.5 text-sm font-medium text-uncertain hover:bg-bg/70">View alerts</a>
+      </div>
+
+      <!-- KPI row -->
+      <div class="grid grid-cols-2 gap-4 lg:grid-cols-5">
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="flex items-center gap-1.5 text-xs text-tsecondary"><i data-lucide="shield-x" class="h-3.5 w-3.5 text-spam"></i> Spam intercepted today</p>
+          <p class="mt-2 text-2xl font-bold font-mono">1,842</p>
+          <p class="mt-1 text-xs text-ham">↑ 12% vs. yesterday</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="flex items-center gap-1.5 text-xs text-tsecondary"><i data-lucide="percent" class="h-3.5 w-3.5 text-uncertain"></i> Spam rate</p>
+          <p class="mt-2 text-2xl font-bold font-mono">16.2%</p>
+          <p class="mt-1 text-xs text-uncertain">North Star target ≥ 95% recall</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="flex items-center gap-1.5 text-xs text-tsecondary"><i data-lucide="inbox" class="h-3.5 w-3.5 text-info"></i> False positive rate</p>
+          <p class="mt-2 text-2xl font-bold font-mono">5.8%</p>
+          <p class="mt-1 text-xs text-tmuted">Target ≤ 6.5% · within range</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="flex items-center gap-1.5 text-xs text-tsecondary"><i data-lucide="brain-circuit" class="h-3.5 w-3.5 text-ham"></i> Model accuracy</p>
+          <p class="mt-2 text-2xl font-bold font-mono">96.6%</p>
+          <p class="mt-1 text-xs text-ham">≥ 95% maintained · v2.4</p>
+        </div>
+        <div class="rounded-xl border border-border bg-surface p-4">
+          <p class="flex items-center gap-1.5 text-xs text-tsecondary"><i data-lucide="timer" class="h-3.5 w-3.5 text-accent"></i> P99 latency</p>
+          <p class="mt-2 text-2xl font-bold font-mono">87ms</p>
+          <p class="mt-1 text-xs text-ham">Target &lt; 100ms · healthy</p>
+        </div>
+      </div>
+
+      <!-- Charts row -->
+      <div class="grid gap-4 lg:grid-cols-5">
+        <div class="rounded-xl border border-border bg-surface p-5 lg:col-span-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-semibold">Spam rate — last 7 days</p>
+              <p class="text-xs text-tmuted">7-day rolling average: <span class="font-mono text-tsecondary">13.1%</span></p>
+            </div>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-uncertain/10 px-2.5 py-1 text-xs font-medium text-uncertain"><i data-lucide="alert-triangle" class="h-3 w-3"></i> Spike on Sun</span>
+          </div>
+          <div class="mt-6 flex h-44 items-end gap-3 px-1">
+            <div class="flex flex-1 flex-col items-center gap-2"><div class="sl-bar w-full rounded-t-md bg-accent/60" style="height:54%"></div><span class="text-[11px] text-tmuted">Mon</span></div>
+            <div class="flex flex-1 flex-col items-center gap-2"><div class="sl-bar w-full rounded-t-md bg-accent/60" style="height:51%"></div><span class="text-[11px] text-tmuted">Tue</span></div>
+            <div class="flex flex-1 flex-col items-center gap-2"><div class="sl-bar w-full rounded-t-md bg-accent/60" style="height:56%"></div><span class="text-[11px] text-tmuted">Wed</span></div>
+            <div class="flex flex-1 flex-col items-center gap-2"><div class="sl-bar w-full rounded-t-md bg-accent/60" style="height:60%"></div><span class="text-[11px] text-tmuted">Thu</span></div>
+            <div class="flex flex-1 flex-col items-center gap-2"><div class="sl-bar w-full rounded-t-md bg-accent/60" style="height:58%"></div><span class="text-[11px] text-tmuted">Fri</span></div>
+            <div class="flex flex-1 flex-col items-center gap-2"><div class="sl-bar w-full rounded-t-md bg-uncertain" style="height:88%"></div><span class="text-[11px] font-medium text-uncertain">Sat</span></div>
+            <div class="flex flex-1 flex-col items-center gap-2"><div class="sl-bar w-full rounded-t-md bg-uncertain" style="height:84%"></div><span class="text-[11px] font-medium text-uncertain">Sun</span></div>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs text-tmuted">
+            <span class="font-mono">11.8%</span><span class="font-mono">16.8%</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-border bg-surface p-5 lg:col-span-2">
+          <p class="text-sm font-semibold">Confidence distribution</p>
+          <p class="text-xs text-tmuted">Messages classified today, by model confidence</p>
+          <div class="mt-5 space-y-3">
+            <div>
+              <div class="flex justify-between text-xs"><span class="text-tsecondary">0–20% (confident ham)</span><span class="font-mono text-tmuted">412</span></div>
+              <div class="sl-meter mt-1.5"><span style="width:3%; background:var(--ham)"></span></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs"><span class="text-tsecondary">20–40%</span><span class="font-mono text-tmuted">1,205</span></div>
+              <div class="sl-meter mt-1.5"><span style="width:9%; background:var(--ham)"></span></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs"><span class="text-uncertain">40–60% — uncertain (Flow 5)</span><span class="font-mono text-uncertain">38</span></div>
+              <div class="sl-meter mt-1.5"><span style="width:1%; background:var(--uncertain)"></span></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs"><span class="text-tsecondary">60–80%</span><span class="font-mono text-tmuted">2,840</span></div>
+              <div class="sl-meter mt-1.5"><span style="width:21%; background:var(--accent)"></span></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs"><span class="text-tsecondary">80–100% (confident spam)</span><span class="font-mono text-tmuted">9,107</span></div>
+              <div class="sl-meter mt-1.5"><span style="width:66%; background:var(--spam)"></span></div>
+            </div>
+          </div>
+          <p class="mt-4 text-xs text-tmuted">Only <span class="font-mono text-uncertain">0.31%</span> of traffic falls in the 40–60% uncertain band — well under the 5% retraining trigger in §7.</p>
+        </div>
+      </div>
+
+      <!-- Bottom row -->
+      <div class="grid gap-4 lg:grid-cols-5">
+        <div class="rounded-xl border border-border bg-surface p-5 lg:col-span-2">
+          <p class="text-sm font-semibold">Top spam phrases this week</p>
+          <p class="text-xs text-tmuted">Highest-weight TF‑IDF terms behind today's classifications</p>
+          <ul class="mt-4 space-y-2.5">
+            <li class="flex items-center gap-3"><span class="w-24 font-mono text-xs text-tsecondary">FREE</span><div class="sl-meter flex-1"><span style="width:100%; background:var(--spam)"></span></div><span class="w-10 text-right font-mono text-xs text-tmuted">482</span></li>
+            <li class="flex items-center gap-3"><span class="w-24 font-mono text-xs text-tsecondary">WIN / WINNER</span><div class="sl-meter flex-1"><span style="width:81%; background:var(--spam)"></span></div><span class="w-10 text-right font-mono text-xs text-tmuted">391</span></li>
+            <li class="flex items-center gap-3"><span class="w-24 font-mono text-xs text-tsecondary">CLAIM</span><div class="sl-meter flex-1"><span style="width:74%; background:var(--spam)"></span></div><span class="w-10 text-right font-mono text-xs text-tmuted">358</span></li>
+            <li class="flex items-center gap-3"><span class="w-24 font-mono text-xs text-tsecondary">PRIZE</span><div class="sl-meter flex-1"><span style="width:65%; background:var(--spam)"></span></div><span class="w-10 text-right font-mono text-xs text-tmuted">312</span></li>
+            <li class="flex items-center gap-3"><span class="w-24 font-mono text-xs text-tsecondary">URGENT</span><div class="sl-meter flex-1"><span style="width:57%; background:var(--spam)"></span></div><span class="w-10 text-right font-mono text-xs text-tmuted">276</span></li>
+            <li class="flex items-center gap-3"><span class="w-24 font-mono text-xs text-tsecondary">CASH</span><div class="sl-meter flex-1"><span style="width:50%; background:var(--spam)"></span></div><span class="w-10 text-right font-mono text-xs text-tmuted">241</span></li>
+          </ul>
+        </div>
+
+        <div class="rounded-xl border border-border bg-surface p-5 lg:col-span-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-semibold">Recent activity</p>
+              <p class="text-xs text-tmuted">Last messages scored by the classifier</p>
+            </div>
+            <a href="03-live-feed.html" class="text-xs font-medium text-accent hover:underline">Open live feed →</a>
+          </div>
+          <ul class="mt-4 divide-y divide-border-soft">
+            <li class="flex items-center gap-3 py-2.5">
+              <span class="rounded-full bg-spam/15 px-2 py-0.5 text-[11px] font-semibold text-spam">SPAM</span>
+              <span class="flex-1 truncate text-sm text-tsecondary">"WINNER!! You have been selected to receive a £900 prize reward. To claim call 09061…"</span>
+              <span class="font-mono text-xs text-tmuted">98.4%</span>
+              <span class="font-mono text-xs text-tmuted">14:37:02</span>
+            </li>
+            <li class="flex items-center gap-3 py-2.5">
+              <span class="rounded-full bg-ham/15 px-2 py-0.5 text-[11px] font-semibold text-ham">HAM</span>
+              <span class="flex-1 truncate text-sm text-tsecondary">"Reminder: Team standup moved to 9:45am tomorrow, same room as last week."</span>
+              <span class="font-mono text-xs text-tmuted">3.1%</span>
+              <span class="font-mono text-xs text-tmuted">14:36:54</span>
+            </li>
+            <li class="flex items-center gap-3 py-2.5">
+              <span class="rounded-full bg-uncertain/15 px-2 py-0.5 text-[11px] font-semibold text-uncertain">UNCERTAIN</span>
+              <span class="flex-1 truncate text-sm text-tsecondary">"Your order #48217 has shipped — track it here: trk.acme-deliveries.co/4q1z"</span>
+              <span class="font-mono text-xs text-tmuted">52.0%</span>
+              <span class="font-mono text-xs text-tmuted">14:36:41</span>
+            </li>
+            <li class="flex items-center gap-3 py-2.5">
+              <span class="rounded-full bg-spam/15 px-2 py-0.5 text-[11px] font-semibold text-spam">SPAM</span>
+              <span class="flex-1 truncate text-sm text-tsecondary">"URGENT! Your Mobile No. has won £2000 Bonus Caller Prize. Call 09066362231 ASAP!"</span>
+              <span class="font-mono text-xs text-tmuted">96.7%</span>
+              <span class="font-mono text-xs text-tmuted">14:36:29</span>
+            </li>
+            <li class="flex items-center gap-3 py-2.5">
+              <span class="rounded-full bg-ham/15 px-2 py-0.5 text-[11px] font-semibold text-ham">HAM</span>
+              <span class="flex-1 truncate text-sm text-tsecondary">"Can you pick up some milk on your way back? Running low, thanks!"</span>
+              <span class="font-mono text-xs text-tmuted">1.8%</span>
+              <span class="font-mono text-xs text-tmuted">14:36:15</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div id="sl-toast" class="rounded-lg border border-border bg-surface2 px-4 py-2.5 text-sm text-tprimary shadow-2xl">
+    <span data-toast-text></span>
+  </div>
+
+  <script src="../assets/app.js"></script>
+</body>
+</html>

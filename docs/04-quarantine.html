@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quarantine — ShieldLine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { bg: '#0a0e16', surface: '#11161f', surface2: '#161c28', surface3: '#1d2433',
+      border: '#232b3a', accent: '#38bdf8', accentStrong: '#0ea5e9',
+      spam: '#f87171', ham: '#34d399', uncertain: '#fbbf24', info: '#818cf8',
+      tprimary: '#e6edf7', tsecondary: '#93a1b8', tmuted: '#5b6b85' },
+    fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], mono: ['JetBrains Mono','ui-monospace','monospace'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-tprimary font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-border bg-surface transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-border px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 text-accent"><i data-lucide="shield-check" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-semibold text-tprimary">ShieldLine</p><p class="text-[11px] text-tmuted">SMS Threat Defense</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Monitor</p>
+      <a href="02-dashboard.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="layout-dashboard" class="sl-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-live-feed.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="activity" class="sl-nav-icon h-4 w-4"></i> Live feed <span class="relative ml-auto flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ham opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-ham"></span></span></a>
+      <a href="08-alerts.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="bell-ring" class="sl-nav-icon h-4 w-4"></i> Alerts &amp; campaigns <span class="ml-auto rounded-full bg-spam/15 px-1.5 py-0.5 text-[10px] font-semibold text-spam">2</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Triage</p>
+      <a href="04-quarantine.html" class="sl-nav-link is-active flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="shield-alert" class="sl-nav-icon h-4 w-4"></i> Quarantine <span class="ml-auto rounded-full bg-surface3 px-1.5 py-0.5 text-[10px] font-semibold text-tsecondary">128</span></a>
+      <a href="05-review-queue.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="list-checks" class="sl-nav-icon h-4 w-4"></i> Review queue <span class="ml-auto rounded-full bg-uncertain/15 px-1.5 py-0.5 text-[10px] font-semibold text-uncertain">14</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">System</p>
+      <a href="09-model-retraining.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="brain-circuit" class="sl-nav-icon h-4 w-4"></i> Model &amp; retraining</a>
+      <a href="10-settings.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="settings" class="sl-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-border p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-tmuted hover:bg-surface2 hover:text-tsecondary"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-info/20 text-xs font-semibold text-info">PN</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-tprimary">Priya Nandakumar</p><p class="text-[11px] text-tmuted">IT Security Manager</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-border bg-bg/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-border p-2 text-tsecondary hover:bg-surface2 lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <div>
+        <h1 class="text-lg font-semibold">Quarantine</h1>
+        <p class="text-xs text-tmuted">Spam is held, never deleted — 30-day false-positive recovery window (FR3)</p>
+      </div>
+    </div>
+    <span class="hidden items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-tsecondary sm:inline-flex">
+      <i data-lucide="clock" class="h-3.5 w-3.5 text-accent"></i> Release SLA: &lt; 1 business hour
+    </span>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-6xl space-y-4">
+
+      <!-- Tabs + search -->
+      <div class="flex flex-col gap-3 rounded-xl border border-border bg-surface p-4 sm:flex-row sm:items-center sm:justify-between" data-tabs>
+        <div class="flex flex-wrap items-center gap-2">
+          <button data-tab="held" class="sl-nav-link is-active rounded-full border border-border px-3 py-1.5 text-xs font-medium text-tsecondary hover:text-tprimary">Held <span class="ml-1 font-mono text-tmuted">128</span></button>
+          <button data-tab="released" class="sl-nav-link rounded-full border border-border px-3 py-1.5 text-xs font-medium text-tsecondary hover:text-tprimary">Released <span class="ml-1 font-mono text-tmuted">43</span></button>
+          <button data-tab="expired" class="sl-nav-link rounded-full border border-border px-3 py-1.5 text-xs font-medium text-tsecondary hover:text-tprimary">Auto-expired <span class="ml-1 font-mono text-tmuted">12</span></button>
+        </div>
+        <div class="relative w-full sm:w-72">
+          <i data-lucide="search" class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tmuted"></i>
+          <input id="q-search" type="text" placeholder="Search by sender ID…" oninput="filterRows()"
+            class="sl-focus w-full rounded-lg border border-border bg-surface2 py-2 pl-9 pr-3 text-sm text-tprimary placeholder:text-tmuted focus:border-accent" />
+        </div>
+        <div class="hidden" data-tab-panel="held"></div>
+        <div class="hidden" data-tab-panel="released"></div>
+        <div class="hidden" data-tab-panel="expired"></div>
+      </div>
+
+      <!-- Held panel -->
+      <div data-panel="held" class="overflow-hidden rounded-xl border border-border bg-surface">
+        <div class="grid grid-cols-12 gap-3 border-b border-border bg-surface2/60 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-tmuted">
+          <div class="col-span-5">Message preview</div>
+          <div class="col-span-2">Sender ID</div>
+          <div class="col-span-1">Confidence</div>
+          <div class="col-span-2">Held since</div>
+          <div class="col-span-2 text-right">Actions</div>
+        </div>
+        <div class="divide-y divide-border-soft">
+          <!-- Row template repeated -->
+          <div class="q-row grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm" data-sender="ACME-HEALTH">
+            <div class="col-span-5 text-tsecondary">"FINAL NOTICE: Your Acme Health Plan renewal is due. Click to renew before coverage lapses: renew.acmehealth.co/r4"</div>
+            <div class="col-span-2 font-mono text-xs text-tsecondary">ACME-HEALTH</div>
+            <div class="col-span-1 font-mono text-xs text-uncertain">87.2%</div>
+            <div class="col-span-2 text-xs text-tmuted">2 days ago · 28d left</div>
+            <div class="col-span-2 flex justify-end gap-2">
+              <button data-modal-open="release-modal" onclick="setReleaseTarget('ACME-HEALTH')" class="rounded-lg border border-ham/30 bg-ham/10 px-2.5 py-1.5 text-xs font-medium text-ham hover:bg-ham/15">Release</button>
+              <button onclick="slToast('Marked as confirmed spam — retained for the remainder of the 30-day window')" class="rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-tsecondary hover:bg-surface2">Confirm spam</button>
+            </div>
+          </div>
+          <div class="q-row grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm" data-sender="OTP-SECURE">
+            <div class="col-span-5 text-tsecondary">"Your OTP for login is 482911. Valid for 10 minutes. Do not share this code with anyone."</div>
+            <div class="col-span-2 font-mono text-xs text-tsecondary">OTP-SECURE</div>
+            <div class="col-span-1 font-mono text-xs text-uncertain">85.9%</div>
+            <div class="col-span-2 text-xs text-tmuted">6 hours ago · 30d left</div>
+            <div class="col-span-2 flex justify-end gap-2">
+              <button data-modal-open="release-modal" onclick="setReleaseTarget('OTP-SECURE')" class="rounded-lg border border-ham/30 bg-ham/10 px-2.5 py-1.5 text-xs font-medium text-ham hover:bg-ham/15">Release</button>
+              <button onclick="slToast('Marked as confirmed spam — retained for the remainder of the 30-day window')" class="rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-tsecondary hover:bg-surface2">Confirm spam</button>
+            </div>
+          </div>
+          <div class="q-row grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm" data-sender="HR-PAYROLL">
+            <div class="col-span-5 text-tsecondary">"URGENT: Action required — payroll direct deposit details need verification before Friday's pay run: payroll.acme-corp.io/verify"</div>
+            <div class="col-span-2 font-mono text-xs text-tsecondary">HR-PAYROLL</div>
+            <div class="col-span-1 font-mono text-xs text-spam">91.3%</div>
+            <div class="col-span-2 text-xs text-tmuted">1 day ago · 29d left</div>
+            <div class="col-span-2 flex justify-end gap-2">
+              <button data-modal-open="release-modal" onclick="setReleaseTarget('HR-PAYROLL')" class="rounded-lg border border-ham/30 bg-ham/10 px-2.5 py-1.5 text-xs font-medium text-ham hover:bg-ham/15">Release</button>
+              <button onclick="slToast('Marked as confirmed spam — retained for the remainder of the 30-day window')" class="rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-tsecondary hover:bg-surface2">Confirm spam</button>
+            </div>
+          </div>
+          <div class="q-row grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm" data-sender="GL-CERTS">
+            <div class="col-span-5 text-tsecondary">"Congratulations on completing your certification! Claim your digital badge and certificate: badges.greatlearning.io/claim/8f23"</div>
+            <div class="col-span-2 font-mono text-xs text-tsecondary">GL-CERTS</div>
+            <div class="col-span-1 font-mono text-xs text-uncertain">86.0%</div>
+            <div class="col-span-2 text-xs text-tmuted">3 days ago · 27d left</div>
+            <div class="col-span-2 flex justify-end gap-2">
+              <button data-modal-open="release-modal" onclick="setReleaseTarget('GL-CERTS')" class="rounded-lg border border-ham/30 bg-ham/10 px-2.5 py-1.5 text-xs font-medium text-ham hover:bg-ham/15">Release</button>
+              <button onclick="slToast('Marked as confirmed spam — retained for the remainder of the 30-day window')" class="rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-tsecondary hover:bg-surface2">Confirm spam</button>
+            </div>
+          </div>
+          <div class="q-row grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm" data-sender="ACME-REWARDS">
+            <div class="col-span-5 text-tsecondary">"Cash-back reward of $42.50 has been credited to your Acme Rewards account. Redeem before it expires: rewards.acme.com/redeem"</div>
+            <div class="col-span-2 font-mono text-xs text-tsecondary">ACME-REWARDS</div>
+            <div class="col-span-1 font-mono text-xs text-uncertain">88.7%</div>
+            <div class="col-span-2 text-xs text-tmuted">5 days ago · 25d left</div>
+            <div class="col-span-2 flex justify-end gap-2">
+              <button data-modal-open="release-modal" onclick="setReleaseTarget('ACME-REWARDS')" class="rounded-lg border border-ham/30 bg-ham/10 px-2.5 py-1.5 text-xs font-medium text-ham hover:bg-ham/15">Release</button>
+              <button onclick="slToast('Marked as confirmed spam — retained for the remainder of the 30-day window')" class="rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-tsecondary hover:bg-surface2">Confirm spam</button>
+            </div>
+          </div>
+          <div class="q-row grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm" data-sender="SALES-EVENTS">
+            <div class="col-span-5 text-tsecondary">"WIN tickets to the regional sales kickoff! Reply YES by Friday to enter the team prize draw."</div>
+            <div class="col-span-2 font-mono text-xs text-tsecondary">SALES-EVENTS</div>
+            <div class="col-span-1 font-mono text-xs text-uncertain">85.1%</div>
+            <div class="col-span-2 text-xs text-tmuted">1 day ago · 29d left</div>
+            <div class="col-span-2 flex justify-end gap-2">
+              <button data-modal-open="release-modal" onclick="setReleaseTarget('SALES-EVENTS')" class="rounded-lg border border-ham/30 bg-ham/10 px-2.5 py-1.5 text-xs font-medium text-ham hover:bg-ham/15">Release</button>
+              <button onclick="slToast('Marked as confirmed spam — retained for the remainder of the 30-day window')" class="rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-tsecondary hover:bg-surface2">Confirm spam</button>
+            </div>
+          </div>
+        </div>
+        <div id="held-empty" class="hidden flex-col items-center gap-2 px-4 py-14 text-center">
+          <i data-lucide="search-x" class="h-6 w-6 text-tmuted"></i>
+          <p class="text-sm font-medium text-tprimary">No held messages match "<span id="held-empty-q" class="font-mono text-tsecondary"></span>"</p>
+          <p class="text-xs text-tmuted">Try a different sender ID, or clear the search.</p>
+        </div>
+      </div>
+
+      <!-- Released panel -->
+      <div data-panel="released" class="hidden overflow-hidden rounded-xl border border-border bg-surface">
+        <div class="grid grid-cols-12 gap-3 border-b border-border bg-surface2/60 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-tmuted">
+          <div class="col-span-5">Message preview</div>
+          <div class="col-span-2">Sender ID</div>
+          <div class="col-span-2">Released by</div>
+          <div class="col-span-3">Outcome</div>
+        </div>
+        <div class="divide-y divide-border-soft">
+          <div class="grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm">
+            <div class="col-span-5 text-tsecondary">"Your OTP for login is 738240. Valid for 10 minutes — do not share with anyone."</div>
+            <div class="col-span-2 font-mono text-xs text-tsecondary">OTP-SECURE</div>
+            <div class="col-span-2 text-xs text-tsecondary">Priya N. · 2h ago</div>
+            <div class="col-span-3"><span class="inline-flex items-center gap-1.5 rounded-full bg-ham/15 px-2 py-0.5 text-[11px] font-semibold text-ham"><i data-lucide="check" class="h-3 w-3"></i> Released · queued for retraining</span></div>
+          </div>
+          <div class="grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm">
+            <div class="col-span-5 text-tsecondary">"FINAL NOTICE: Insurance policy #88213 renewal due 6/15 — confirm your details to keep coverage active."</div>
+            <div class="col-span-2 font-mono text-xs text-tsecondary">INS-RENEW</div>
+            <div class="col-span-2 text-xs text-tsecondary">Priya N. · yesterday</div>
+            <div class="col-span-3"><span class="inline-flex items-center gap-1.5 rounded-full bg-ham/15 px-2 py-0.5 text-[11px] font-semibold text-ham"><i data-lucide="check" class="h-3 w-3"></i> Released · queued for retraining</span></div>
+          </div>
+          <div class="grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm">
+            <div class="col-span-5 text-tsecondary">"WIN a $50 gift card for completing the employee engagement survey by Friday — link inside!"</div>
+            <div class="col-span-2 font-mono text-xs text-tsecondary">HR-SURVEY</div>
+            <div class="col-span-2 text-xs text-tsecondary">Devon R. · 2 days ago</div>
+            <div class="col-span-3"><span class="inline-flex items-center gap-1.5 rounded-full bg-ham/15 px-2 py-0.5 text-[11px] font-semibold text-ham"><i data-lucide="check" class="h-3 w-3"></i> Released · queued for retraining</span></div>
+          </div>
+          <div class="grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm">
+            <div class="col-span-5 text-tsecondary">"Your prescription refill is ready for pickup at Acme Pharmacy, store #112. Open until 9pm today."</div>
+            <div class="col-span-2 font-mono text-xs text-tsecondary">RX-PHARMA</div>
+            <div class="col-span-2 text-xs text-tsecondary">Priya N. · 3 days ago</div>
+            <div class="col-span-3"><span class="inline-flex items-center gap-1.5 rounded-full bg-ham/15 px-2 py-0.5 text-[11px] font-semibold text-ham"><i data-lucide="check" class="h-3 w-3"></i> Released · queued for retraining</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Auto-expired panel -->
+      <div data-panel="expired" class="hidden overflow-hidden rounded-xl border border-border bg-surface">
+        <div class="grid grid-cols-12 gap-3 border-b border-border bg-surface2/60 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-tmuted">
+          <div class="col-span-3">Sender ID</div>
+          <div class="col-span-3">Message hash (SHA‑256)</div>
+          <div class="col-span-3">Quarantined</div>
+          <div class="col-span-3">Expired</div>
+        </div>
+        <div class="divide-y divide-border-soft">
+          <div class="grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm">
+            <div class="col-span-3 font-mono text-xs text-tsecondary">PRZ-DRAW</div>
+            <div class="col-span-3 truncate font-mono text-xs text-tmuted">sha256:9f12a3…e041</div>
+            <div class="col-span-3 text-xs text-tmuted">May 8, 2026</div>
+            <div class="col-span-3 text-xs text-tmuted">Jun 7, 2026 · purged</div>
+          </div>
+          <div class="grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm">
+            <div class="col-span-3 font-mono text-xs text-tsecondary">CASH-LINE</div>
+            <div class="col-span-3 truncate font-mono text-xs text-tmuted">sha256:5b88c1…2f3a</div>
+            <div class="col-span-3 text-xs text-tmuted">May 6, 2026</div>
+            <div class="col-span-3 text-xs text-tmuted">Jun 5, 2026 · purged</div>
+          </div>
+          <div class="grid grid-cols-12 items-center gap-3 px-4 py-3.5 text-sm">
+            <div class="col-span-3 font-mono text-xs text-tsecondary">WIN-CLUB</div>
+            <div class="col-span-3 truncate font-mono text-xs text-tmuted">sha256:d203e7…90ab</div>
+            <div class="col-span-3 text-xs text-tmuted">May 4, 2026</div>
+            <div class="col-span-3 text-xs text-tmuted">Jun 3, 2026 · purged</div>
+          </div>
+        </div>
+        <p class="px-4 py-3 text-xs text-tmuted">Only the message hash and metadata are retained after expiry — original text is purged in line with the in-memory-only privacy requirement (FR10).</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Release confirmation modal -->
+  <div id="release-modal" data-modal class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4">
+    <div class="w-full max-w-md rounded-xl border border-border bg-surface p-6 shadow-2xl">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-ham/15 text-ham"><i data-lucide="inbox" class="h-5 w-5"></i></div>
+      <h3 class="mt-4 text-base font-semibold">Release this message to the inbox?</h3>
+      <p class="mt-1.5 text-sm leading-relaxed text-tsecondary">
+        From <span id="release-sender" class="font-mono text-tprimary">—</span>. This delivers the held message to its recipient,
+        logs a confirmed false-positive correction, and adds it to the retraining queue (Flow 2) — typically within the
+        1-business-hour SLA (FR4).
+      </p>
+      <div class="mt-6 flex justify-end gap-2">
+        <button data-modal-close class="rounded-lg border border-border px-4 py-2 text-sm font-medium text-tsecondary hover:bg-surface2">Cancel</button>
+        <button onclick="confirmRelease()" class="rounded-lg bg-ham px-4 py-2 text-sm font-semibold text-bg hover:brightness-110">Release &amp; log correction</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="sl-toast" class="rounded-lg border border-border bg-surface2 px-4 py-2.5 text-sm text-tprimary shadow-2xl">
+    <span data-toast-text></span>
+  </div>
+
+  <script src="../assets/app.js"></script>
+  <script>
+    let releaseTarget = null;
+    function setReleaseTarget(sender) {
+      releaseTarget = sender;
+      document.getElementById('release-sender').textContent = sender;
+    }
+    function confirmRelease() {
+      document.getElementById('release-modal').classList.add('hidden');
+      const row = document.querySelector(`.q-row[data-sender="${releaseTarget}"]`);
+      if (row) row.remove();
+      slToast(`Released message from ${releaseTarget} · false-positive correction logged for retraining`);
+      filterRows();
+    }
+
+    // Tab → panel switching
+    document.querySelectorAll('[data-tab]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+        document.querySelectorAll('[data-tab]').forEach((b) => b.classList.toggle('is-active', b === btn));
+        document.querySelectorAll('[data-panel]').forEach((p) => p.classList.toggle('hidden', p.getAttribute('data-panel') !== target));
+      });
+    });
+
+    function filterRows() {
+      const q = document.getElementById('q-search').value.trim().toUpperCase();
+      const rows = document.querySelectorAll('.q-row');
+      let visible = 0;
+      rows.forEach((row) => {
+        const match = !q || row.dataset.sender.toUpperCase().includes(q);
+        row.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+      const empty = document.getElementById('held-empty');
+      if (rows.length > 0 && visible === 0) {
+        document.getElementById('held-empty-q').textContent = document.getElementById('q-search').value.trim();
+        empty.classList.remove('hidden');
+        empty.classList.add('flex');
+      } else {
+        empty.classList.add('hidden');
+        empty.classList.remove('flex');
+      }
+    }
+  </script>
+</body>
+</html>

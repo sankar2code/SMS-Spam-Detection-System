@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alerts & Campaigns — ShieldLine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { bg: '#0a0e16', surface: '#11161f', surface2: '#161c28', surface3: '#1d2433',
+      border: '#232b3a', accent: '#38bdf8', accentStrong: '#0ea5e9',
+      spam: '#f87171', ham: '#34d399', uncertain: '#fbbf24', info: '#818cf8',
+      tprimary: '#e6edf7', tsecondary: '#93a1b8', tmuted: '#5b6b85' },
+    fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], mono: ['JetBrains Mono','ui-monospace','monospace'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-tprimary font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-border bg-surface transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-border px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 text-accent"><i data-lucide="shield-check" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-semibold text-tprimary">ShieldLine</p><p class="text-[11px] text-tmuted">SMS Threat Defense</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Monitor</p>
+      <a href="02-dashboard.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="layout-dashboard" class="sl-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-live-feed.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="activity" class="sl-nav-icon h-4 w-4"></i> Live feed <span class="relative ml-auto flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ham opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-ham"></span></span></a>
+      <a href="08-alerts.html" class="sl-nav-link is-active flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="bell-ring" class="sl-nav-icon h-4 w-4"></i> Alerts &amp; campaigns <span class="ml-auto rounded-full bg-spam/15 px-1.5 py-0.5 text-[10px] font-semibold text-spam">2</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">Triage</p>
+      <a href="04-quarantine.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="shield-alert" class="sl-nav-icon h-4 w-4"></i> Quarantine <span class="ml-auto rounded-full bg-surface3 px-1.5 py-0.5 text-[10px] font-semibold text-tsecondary">128</span></a>
+      <a href="05-review-queue.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="list-checks" class="sl-nav-icon h-4 w-4"></i> Review queue <span class="ml-auto rounded-full bg-uncertain/15 px-1.5 py-0.5 text-[10px] font-semibold text-uncertain">14</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-tmuted">System</p>
+      <a href="09-model-retraining.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="brain-circuit" class="sl-nav-icon h-4 w-4"></i> Model &amp; retraining</a>
+      <a href="10-settings.html" class="sl-nav-link flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm text-tsecondary hover:bg-surface2 hover:text-tprimary"><i data-lucide="settings" class="sl-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-border p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-tmuted hover:bg-surface2 hover:text-tsecondary"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-info/20 text-xs font-semibold text-info">PN</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-tprimary">Priya Nandakumar</p><p class="text-[11px] text-tmuted">IT Security Manager</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-border bg-bg/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-border p-2 text-tsecondary hover:bg-surface2 lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <div>
+        <h1 class="text-lg font-semibold">Alerts &amp; campaigns</h1>
+        <p class="text-xs text-tmuted">Flow 4 · spike detection within 15 minutes, weekly reporting (FR7)</p>
+      </div>
+    </div>
+    <button onclick="slToast('Weekly security report exported as PDF and emailed to the distribution list')" class="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface px-3 py-1.5 text-sm font-medium text-tsecondary hover:bg-surface2 hover:text-tprimary">
+      <i data-lucide="mail" class="h-3.5 w-3.5"></i> Email weekly report
+    </button>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-5xl space-y-6">
+
+      <!-- Active alerts -->
+      <div>
+        <h2 class="text-sm font-semibold">Active alerts <span class="ml-1 rounded-full bg-spam/15 px-2 py-0.5 text-xs font-semibold text-spam">2 open</span></h2>
+        <div class="mt-3 space-y-3">
+
+          <details open class="group overflow-hidden rounded-xl border border-spam/25 bg-spam/[0.05]">
+            <summary class="flex cursor-pointer list-none items-start gap-3 p-4">
+              <div class="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-spam/15 text-spam"><i data-lucide="trending-up" class="h-4.5 w-4.5"></i></div>
+              <div class="flex-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <p class="text-sm font-semibold text-tprimary">Spam rate spike — +24% above 7-day rolling average</p>
+                  <span class="rounded-full bg-spam/15 px-2 py-0.5 text-[10px] font-semibold uppercase text-spam">Critical</span>
+                  <span class="rounded-full bg-uncertain/15 px-2 py-0.5 text-[10px] font-semibold uppercase text-uncertain">Investigating</span>
+                </div>
+                <p class="mt-1 text-xs text-tmuted">Triggered Jun 8, 2026 at 14:32 · assigned to Priya Nandakumar · fired 6 minutes after threshold breach (target &lt; 15 min)</p>
+              </div>
+              <i data-lucide="chevron-down" class="mt-1 h-4 w-4 flex-shrink-0 text-tmuted transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="border-t border-border/60 px-4 pb-4 pt-3">
+              <div class="grid gap-4 lg:grid-cols-5">
+                <div class="lg:col-span-3">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-tmuted">Spam rate vs. 7-day average</p>
+                  <div class="mt-3 flex h-32 items-end gap-2.5 px-1">
+                    <div class="flex flex-1 flex-col items-center gap-1.5"><div class="sl-bar w-full rounded-t bg-accent/50" style="height:46%"></div><span class="text-[10px] text-tmuted">08:00</span></div>
+                    <div class="flex flex-1 flex-col items-center gap-1.5"><div class="sl-bar w-full rounded-t bg-accent/50" style="height:50%"></div><span class="text-[10px] text-tmuted">10:00</span></div>
+                    <div class="flex flex-1 flex-col items-center gap-1.5"><div class="sl-bar w-full rounded-t bg-accent/50" style="height:48%"></div><span class="text-[10px] text-tmuted">12:00</span></div>
+                    <div class="flex flex-1 flex-col items-center gap-1.5"><div class="sl-bar w-full rounded-t bg-uncertain" style="height:62%"></div><span class="text-[10px] text-tmuted">13:00</span></div>
+                    <div class="flex flex-1 flex-col items-center gap-1.5"><div class="sl-bar w-full rounded-t bg-spam" style="height:88%"></div><span class="text-[10px] font-medium text-spam">14:00</span></div>
+                    <div class="flex flex-1 flex-col items-center gap-1.5"><div class="sl-bar w-full rounded-t bg-spam" style="height:92%"></div><span class="text-[10px] font-medium text-spam">15:00</span></div>
+                  </div>
+                  <p class="mt-3 text-xs leading-relaxed text-tsecondary">Spam rate climbed from a baseline of <span class="font-mono">13.1%</span> to <span class="font-mono text-spam">16.2%</span> within two hours — consistent with a coordinated campaign rather than normal variance.</p>
+                </div>
+                <div class="lg:col-span-2">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-tmuted">Sample messages driving the spike</p>
+                  <ul class="mt-2 space-y-2">
+                    <li class="rounded-lg border border-border bg-surface p-2.5 text-xs text-tsecondary">"CASH prize of £5000 is waiting! Text WIN to 80082 now to claim before midnight…" <span class="font-mono text-tmuted">· CASH-LINE</span></li>
+                    <li class="rounded-lg border border-border bg-surface p-2.5 text-xs text-tsecondary">"Congratulations! You've been selected for a FREE flagship phone. Click to claim…" <span class="font-mono text-tmuted">· +1 302 555 0142</span></li>
+                    <li class="rounded-lg border border-border bg-surface p-2.5 text-xs text-tsecondary">"URGENT! Your Mobile No. has won £2000 Bonus Caller Prize. Call 09066362231…" <span class="font-mono text-tmuted">· +44 7700 900112</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mt-4 rounded-lg border border-border bg-surface p-3.5">
+                <p class="text-xs font-semibold uppercase tracking-wide text-tmuted">Recommended actions</p>
+                <ul class="mt-2 space-y-1.5 text-sm text-tsecondary">
+                  <li class="flex items-center gap-2"><i data-lucide="check-square" class="h-4 w-4 text-ham"></i> Confirm campaign pattern against top spam phrases (CASH, FREE, WIN/WINNER)</li>
+                  <li class="flex items-center gap-2"><i data-lucide="square" class="h-4 w-4 text-tmuted"></i> Review related senders for allowlist/blocklist action in Settings</li>
+                  <li class="flex items-center gap-2"><i data-lucide="square" class="h-4 w-4 text-tmuted"></i> Flag the affected phrases for priority inclusion in next month's retraining corpus</li>
+                </ul>
+              </div>
+              <div class="mt-3 flex justify-end gap-2">
+                <button onclick="slToast('Alert acknowledged and assigned to you')" class="rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-tsecondary hover:bg-surface2">Acknowledge</button>
+                <button onclick="slToast('Marked resolved — added to this week’s security report')" class="rounded-lg border border-ham/30 bg-ham/10 px-3 py-1.5 text-xs font-medium text-ham hover:bg-ham/15">Mark resolved</button>
+              </div>
+            </div>
+          </details>
+
+          <details class="group overflow-hidden rounded-xl border border-uncertain/25 bg-uncertain/[0.04]">
+            <summary class="flex cursor-pointer list-none items-start gap-3 p-4">
+              <div class="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-uncertain/15 text-uncertain"><i data-lucide="search" class="h-4.5 w-4.5"></i></div>
+              <div class="flex-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <p class="text-sm font-semibold text-tprimary">New spam pattern detected — "claim your reward" phrase surge</p>
+                  <span class="rounded-full bg-uncertain/15 px-2 py-0.5 text-[10px] font-semibold uppercase text-uncertain">Medium</span>
+                  <span class="rounded-full bg-uncertain/15 px-2 py-0.5 text-[10px] font-semibold uppercase text-uncertain">Investigating</span>
+                </div>
+                <p class="mt-1 text-xs text-tmuted">Triggered Jun 7, 2026 at 09:14 · assigned to Devon Reyes · 41 occurrences in 24 hours (vs. 6 the week before)</p>
+              </div>
+              <i data-lucide="chevron-down" class="mt-1 h-4 w-4 flex-shrink-0 text-tmuted transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="border-t border-border/60 px-4 pb-4 pt-3 text-sm text-tsecondary">
+              A new variant of prize-claim phishing is circulating using the phrase "claim your reward" paired with shortened links.
+              Devon is cross-referencing sender IDs against the allowlist and preparing labelled examples for the July retraining run.
+              <div class="mt-3 flex justify-end gap-2">
+                <button onclick="slToast('Marked resolved — added to this week’s security report')" class="rounded-lg border border-ham/30 bg-ham/10 px-3 py-1.5 text-xs font-medium text-ham hover:bg-ham/15">Mark resolved</button>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Resolved -->
+      <div>
+        <h2 class="text-sm font-semibold text-tsecondary">Recently resolved</h2>
+        <div class="mt-3 overflow-hidden rounded-xl border border-border bg-surface">
+          <div class="flex items-center gap-3 px-4 py-3.5 text-sm">
+            <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-ham/15 text-ham"><i data-lucide="check" class="h-4 w-4"></i></span>
+            <div class="flex-1">
+              <p class="text-tprimary">False positive rate approached threshold — peaked at 6.3% (target ≤ 6.5%)</p>
+              <p class="text-xs text-tmuted">Resolved Jun 6, 2026 · root cause: a legitimate appointment-reminder campaign sharing vocabulary with spam · added 40 examples to allowlist review</p>
+            </div>
+            <span class="rounded-full bg-surface2 px-2 py-0.5 text-[11px] text-tmuted">Low</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weekly report -->
+      <div class="rounded-xl border border-border bg-surface p-5">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p class="text-sm font-semibold">Weekly security report — Jun 1–7, 2026</p>
+            <p class="text-xs text-tmuted">Auto-generated every Monday and emailed to the security distribution list (Story 4)</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="slToast('Report exported as CSV — ready for your SIEM pipeline')" class="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-tsecondary hover:bg-surface2"><i data-lucide="download" class="h-3.5 w-3.5"></i> Export CSV</button>
+            <button onclick="slToast('Opening full report…')" class="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-xs font-semibold text-bg hover:bg-accentStrong"><i data-lucide="file-text" class="h-3.5 w-3.5"></i> View full report</button>
+          </div>
+        </div>
+        <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div class="rounded-lg border border-border bg-surface2 p-3"><p class="text-xs text-tmuted">Messages classified</p><p class="mt-1 font-mono text-lg font-bold">1.21M</p></div>
+          <div class="rounded-lg border border-border bg-surface2 p-3"><p class="text-xs text-tmuted">Spam rate</p><p class="mt-1 font-mono text-lg font-bold">13.8%</p></div>
+          <div class="rounded-lg border border-border bg-surface2 p-3"><p class="text-xs text-tmuted">Precision / recall</p><p class="mt-1 font-mono text-lg font-bold">93.7% / 91.2%</p></div>
+          <div class="rounded-lg border border-border bg-surface2 p-3"><p class="text-xs text-tmuted">New spam phrases</p><p class="mt-1 font-mono text-lg font-bold">"claim your reward", "verify account now"</p></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div id="sl-toast" class="rounded-lg border border-border bg-surface2 px-4 py-2.5 text-sm text-tprimary shadow-2xl">
+    <span data-toast-text></span>
+  </div>
+
+  <script src="../assets/app.js"></script>
+</body>
+</html>

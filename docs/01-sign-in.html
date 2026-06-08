@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign in — ShieldLine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { bg: '#0a0e16', surface: '#11161f', surface2: '#161c28', surface3: '#1d2433',
+        border: '#232b3a', accent: '#38bdf8', accentStrong: '#0ea5e9',
+        spam: '#f87171', ham: '#34d399', uncertain: '#fbbf24', info: '#818cf8',
+        tprimary: '#e6edf7', tsecondary: '#93a1b8', tmuted: '#5b6b85' },
+      fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], mono: ['JetBrains Mono','ui-monospace','monospace'] }
+    } }
+  };
+</script>
+</head>
+<body class="bg-bg text-tprimary font-sans antialiased min-h-screen">
+
+  <div class="grid min-h-screen lg:grid-cols-2">
+    <!-- Form side -->
+    <div class="flex items-center justify-center px-6 py-12">
+      <div class="w-full max-w-sm">
+        <div class="flex items-center gap-2.5">
+          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/15 text-accent">
+            <i data-lucide="shield-check" class="h-5 w-5"></i>
+          </div>
+          <div class="leading-tight">
+            <p class="text-sm font-semibold">ShieldLine</p>
+            <p class="text-[11px] text-tmuted">SMS Threat Defense Console</p>
+          </div>
+        </div>
+
+        <h1 class="mt-8 text-2xl font-bold">Sign in to your console</h1>
+        <p class="mt-1.5 text-sm text-tsecondary">Enter your work email to access the security dashboard, quarantine, and review tools.</p>
+
+        <form class="mt-8 space-y-4" onsubmit="event.preventDefault(); window.location.href='02-dashboard.html';">
+          <div>
+            <label for="email" class="block text-sm font-medium text-tsecondary">Work email</label>
+            <input id="email" type="email" required value="priya.nandakumar@acmemobile.com"
+              class="sl-focus mt-1.5 w-full rounded-lg border border-border bg-surface px-3.5 py-2.5 text-sm text-tprimary placeholder:text-tmuted focus:border-accent" placeholder="you@company.com" />
+          </div>
+          <div>
+            <div class="flex items-center justify-between">
+              <label for="password" class="block text-sm font-medium text-tsecondary">Password</label>
+              <a href="#" class="text-xs font-medium text-accent hover:underline">Forgot password?</a>
+            </div>
+            <div class="relative mt-1.5">
+              <input id="password" type="password" required value="••••••••••••"
+                class="sl-focus w-full rounded-lg border border-border bg-surface px-3.5 py-2.5 text-sm text-tprimary placeholder:text-tmuted focus:border-accent" />
+              <i data-lucide="eye" class="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-tmuted"></i>
+            </div>
+          </div>
+          <label class="flex items-center gap-2 text-sm text-tsecondary">
+            <input type="checkbox" checked class="h-4 w-4 rounded border-border bg-surface text-accent focus:ring-accent" />
+            Keep me signed in on this device
+          </label>
+          <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-bg transition-colors hover:bg-accentStrong">
+            Sign in
+            <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </button>
+        </form>
+
+        <div class="mt-6 flex items-center gap-3">
+          <div class="h-px flex-1 bg-border"></div>
+          <span class="text-xs text-tmuted">or</span>
+          <div class="h-px flex-1 bg-border"></div>
+        </div>
+
+        <button class="mt-6 flex w-full items-center justify-center gap-2.5 rounded-lg border border-border bg-surface px-4 py-2.5 text-sm font-medium text-tprimary hover:bg-surface2">
+          <i data-lucide="lock-keyhole" class="h-4 w-4 text-info"></i>
+          Continue with company SSO
+        </button>
+
+        <p class="mt-8 text-xs leading-relaxed text-tmuted">
+          Access is limited to staff with a security, IT, or operations role at <span class="text-tsecondary">Acme Mobile</span>.
+          Need an account or seeing a wrongly blocked message instead?
+          <a href="07-report-issue.html" class="text-accent hover:underline">Report a misclassification →</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Visual / stats side -->
+    <div class="relative hidden overflow-hidden border-l border-border bg-surface lg:block">
+      <div class="absolute inset-0 opacity-40" style="background: radial-gradient(circle at 30% 20%, rgba(56,189,248,0.18), transparent 45%), radial-gradient(circle at 80% 70%, rgba(248,113,113,0.12), transparent 45%);"></div>
+      <div class="relative flex h-full flex-col justify-center px-14 py-16">
+        <span class="inline-flex w-fit items-center gap-1.5 rounded-full border border-border bg-bg/60 px-3 py-1 text-xs font-medium text-tsecondary">
+          <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ham opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-ham"></span></span>
+          Classification API — operating normally
+        </span>
+        <h2 class="mt-6 max-w-md text-3xl font-bold leading-snug">
+          Every message scored in <span class="text-accent">&lt;100ms</span>, before it ever reaches a phone.
+        </h2>
+        <p class="mt-3 max-w-md text-sm leading-relaxed text-tsecondary">
+          Decision-tree classification on TF‑IDF features, trained on 5,572 labelled SMS messages — catching 91.5% of
+          spam on the test set while keeping false positives low enough to trust.
+        </p>
+        <div class="mt-10 grid grid-cols-2 gap-4">
+          <div class="rounded-xl border border-border bg-bg/50 p-4 backdrop-blur">
+            <p class="text-xl font-bold font-mono text-spam">1,842</p>
+            <p class="mt-1 text-xs text-tsecondary">Spam intercepted today</p>
+          </div>
+          <div class="rounded-xl border border-border bg-bg/50 p-4 backdrop-blur">
+            <p class="text-xl font-bold font-mono text-ham">96.6%</p>
+            <p class="mt-1 text-xs text-tsecondary">Model accuracy, monthly gate</p>
+          </div>
+          <div class="rounded-xl border border-border bg-bg/50 p-4 backdrop-blur">
+            <p class="text-xl font-bold font-mono text-info">87ms</p>
+            <p class="mt-1 text-xs text-tsecondary">P99 latency (target &lt;100ms)</p>
+          </div>
+          <div class="rounded-xl border border-border bg-bg/50 p-4 backdrop-blur">
+            <p class="text-xl font-bold font-mono text-uncertain">0.31%</p>
+            <p class="mt-1 text-xs text-tsecondary">Messages in uncertain zone</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/app.js"></script>
+</body>
+</html>

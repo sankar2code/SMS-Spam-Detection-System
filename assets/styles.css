@@ -1,0 +1,136 @@
+/* ShieldLine — shared design tokens & overrides (Tailwind handles the rest via CDN) */
+
+:root {
+  --bg: #0a0e16;
+  --surface: #11161f;
+  --surface-2: #161c28;
+  --surface-3: #1d2433;
+  --border: #232b3a;
+  --border-soft: #1a2130;
+
+  --text-primary: #e6edf7;
+  --text-secondary: #93a1b8;
+  --text-muted: #5b6b85;
+
+  --accent: #38bdf8;
+  --accent-strong: #0ea5e9;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+
+  --spam: #f87171;
+  --spam-soft: rgba(248, 113, 113, 0.12);
+  --ham: #34d399;
+  --ham-soft: rgba(52, 211, 153, 0.12);
+  --uncertain: #fbbf24;
+  --uncertain-soft: rgba(251, 191, 36, 0.12);
+  --info: #818cf8;
+  --info-soft: rgba(129, 140, 248, 0.12);
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #2a3346; }
+
+/* Card / surface helpers */
+.sl-surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.sl-surface-2 {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+/* Focus ring consistent with dark theme */
+.sl-focus:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Live pulse indicator */
+.sl-pulse {
+  position: relative;
+}
+.sl-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.35;
+  animation: sl-pulse-ring 2s ease-out infinite;
+}
+@keyframes sl-pulse-ring {
+  0%   { transform: scale(0.6); opacity: 0.45; }
+  70%  { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Subtle row enter animation for streaming feed */
+@keyframes sl-row-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.sl-row-enter {
+  animation: sl-row-in 0.35s ease-out;
+}
+
+/* Confidence bar track */
+.sl-meter {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+.sl-meter > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+
+/* Toast */
+#sl-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  transition: transform 0.25s ease;
+  z-index: 60;
+}
+#sl-toast.sl-toast-show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Simple bar chart bars grow-in */
+@keyframes sl-bar-grow {
+  from { height: 0; }
+}
+.sl-bar {
+  animation: sl-bar-grow 0.6s ease-out;
+}
+
+/* Nav active state */
+.sl-nav-link.is-active {
+  background: var(--surface-2);
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+.sl-nav-link.is-active .sl-nav-icon {
+  color: var(--accent);
+}
